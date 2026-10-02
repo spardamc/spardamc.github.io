@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stations &amp; miners — Florarium · Sparda</title>
+<meta name="description" content="Florarium's crafting stations: the Bloom Apothecary and its rite circle, side stations, automation rules, and tiered Bonsai Miners.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2312261a'/%3E%3Ctext x='32' y='44' font-family='sans-serif' font-size='36' font-weight='bold' text-anchor='middle' fill='%237dd87d'%3EF%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<meta name="theme-color" content="#101014">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Stations &amp; miners — Florarium · Sparda">
+<meta property="og:description" content="Florarium's crafting stations: the Bloom Apothecary and its rite circle, side stations, automation rules, and tiered Bonsai Miners.">
+<noscript><style>@media (max-width: 900px){.sidebar{position:static;transform:none;height:auto;box-shadow:none}.topbar .burger{display:none}}</style></noscript>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark" aria-hidden="true">F</span>
+      <span>
+        <span class="name">Florarium</span><br>
+        <span class="ver">In development</span>
+      </span>
+    </a>
+
+    <div class="nav-group">Team</div>
+    <a class="nav" href="../index.html">Team Home</a>
+    <a class="nav" href="../mods.html">All Mods</a>
+
+    <div class="nav-group">Mod docs</div>
+    <a class="nav" href="../docs/index.html">Scripta <span class="nav-badge on">Available</span></a>
+    <a class="nav" href="index.html">Florarium <span class="nav-badge">In dev</span></a>
+    <a class="nav" href="../divinity/index.html">Divinity Music <span class="nav-badge">In dev</span></a>
+
+    <div class="nav-group">Florarium guide</div>
+    <a class="nav" href="index.html">Overview</a>
+    <a class="nav" href="mana.html">Mana economy</a>
+    <a class="nav" href="blooms.html">Bloom chain</a>
+    <a class="nav" href="stations.html">Stations &amp; miners</a>
+    <a class="nav" href="magic.html">Bloom Magic &amp; FX</a>
+
+    <div class="sidebar-foot">
+      <a href="../index.html">Team Site</a>
+      <br>Florarium &middot; in development &middot; MC 1.21.1
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">&#9776;</button>
+      <span class="label">Florarium docs &middot; Sparda</span>
+    </div>
+
+    <div class="content">
+
+      <h1>Stations &amp; miners</h1>
+      <p class="lead">
+        The machines that turn mana and essences into the next flower — plus the
+        ore-generating Bonsai Miners that fund the whole operation.
+      </p>
+
+      <div class="toc">
+        <div class="t">On this page</div>
+        <ol>
+          <li><a href="#apothecary">Bloom Apothecary &amp; rite circle</a></li>
+          <li><a href="#side-stations">Side stations</a></li>
+          <li><a href="#miners">Bonsai Miners</a></li>
+          <li><a href="#automation">Automation</a></li>
+          <li><a href="#items">Key items</a></li>
+          <li><a href="#mixins">World touches</a></li>
+        </ol>
+      </div>
+
+      <h2 id="apothecary">Bloom Apothecary &amp; rite circle</h2>
+
+      <p>
+        The <strong>Bloom Apothecary</strong> is the primary crafting station
+        (needs open sky), with <strong>15 recipes across 3 tiers</strong> (base,
+        rite, forge). It crafts from the player's inventory, supports hand-craft
+        and auto-craft, and auto-fires when hopper-fed while pool mana holds.
+      </p>
+
+      <p>
+        Deeper tiers need the <strong>rite circle</strong>: 4 Bloom Pedestals
+        placed 2 blocks out N/S/E/W from the Apothecary. The circle unlocks rite
+        recipes (Frostbloom through Rune Bloom) and forge recipes (Cinder Bloom
+        through Bloomheart Core). The <strong>Architect Wand</strong> raises the
+        complete circle in one click, consuming the blocks from the inventory.
+      </p>
+
+      <p>
+        Two wands orchestrate it all: the <strong>Wand of Binding</strong> is the
+        ritual tool with bind and trigger modes (shift-right-click to toggle),
+        and the <strong>Architect Wand</strong> is the one-click builder.
+      </p>
+
+      <h2 id="side-stations">Side stations</h2>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Block</th><th>Function</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Essence Condenser</td><td>4 raw essences &rarr; 1 Condensed Essence (50 mana); auto-crafts when hopper-fed</td></tr>
+          <tr><td>Petal Cradle</td><td>Converts logs &rarr; Bloomwood, cobble &rarr; Bloomstone (20 mana each, 60s cycle); automatic</td></tr>
+          <tr><td>Essence Collector</td><td>Vacuums loose essences in a 32&times;32 area; hopper-compatible output</td></tr>
+          <tr><td>Bloom Pedestal</td><td>Display stand + structural rite circle component; 4 pedestals unlock deep recipes</td></tr>
+          <tr><td>Mana Relay</td><td>Extends pool reach; chain relays to feed distant farms; right-click shows carried mana</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p>
+        Pedestals double as display stands: right-click with an item to exhibit
+        it, empty-hand to take it back (hopper compatible).
+      </p>
+
+      <h2 id="miners">Bonsai Miners</h2>
+
+      <p>
+        Tiered single-block ore generators (T1–T4). Right-click opens a GUI to
+        cycle ore, toggle auto-smelt, and view progress and mana status. Growth
+        slows to 10% when no pool is in range (mana-starved state). Adjacent
+        miners form a <strong>miner network</strong> whose outputs route to
+        adjacent inventories via the Fabric Transfer API. Speeds are
+        configurable via <code>divinity_additions.json</code>.
+      </p>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Tier</th><th>Ores</th><th>Batch</th><th>Auto-smelt</th><th>Speed</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>T1</td><td>Coal</td><td>1</td><td>No</td><td>50t (2.5s)</td></tr>
+          <tr><td>T2</td><td>Coal, Copper, Iron</td><td>2</td><td>Yes</td><td>50&ndash;100t</td></tr>
+          <tr><td>T3</td><td>+ Lapis, Redstone</td><td>3</td><td>Yes</td><td>50&ndash;100t</td></tr>
+          <tr><td>T4</td><td>All + Gold, Diamond, Emerald, Ancient Debris</td><td>1</td><td>Yes</td><td>50&ndash;400t</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2 id="automation">Automation</h2>
+
+      <ul>
+        <li>Hoppers push ingredients into the Apothecary, Condenser, Forge, and ring from any side or top; finished goods exit the <strong>bottom</strong>.</li>
+        <li>Breaking a station drops its buffer — nothing voids.</li>
+        <li>Pedestals take and give hopper IO for display stock.</li>
+        <li>The things hoppers cannot do: attune, stoke, and trigger — those stay player gestures by design.</li>
+      </ul>
+
+      <h2 id="items">Key items</h2>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Item</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Bloom Pearl</td><td>Attunement currency (ender pearl + 1000 mana at pool)</td></tr>
+          <tr><td>Bloom Diamond</td><td>High-tier crafting ingredient (diamond + 2500 mana at pool)</td></tr>
+          <tr><td>Bloom Locket</td><td>Passive QoL — 20% chance every 20s to convert junk to 10 mana</td></tr>
+          <tr><td>Mana-Charged Upgrade</td><td>Crafted via Diamond Bloom right-click (5000 mana)</td></tr>
+          <tr><td>Fertilizer</td><td>Thrown splash — buffs nearby blooms for 3 minutes</td></tr>
+          <tr><td>Divinity Guide</td><td>In-game guide book</td></tr>
+          <tr><td>Prism Shard</td><td>Dropped from Prism Ore (y &minus;48 to &minus;8, diamond pickaxe)</td></tr>
+          <tr><td>Raw &amp; Condensed Essences</td><td>12 raw essences drop from flowers; 4 raw + 50 mana &rarr; Condensed</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2 id="mixins">World touches</h2>
+
+      <ul>
+        <li>Near an <strong>Anvil Bloom</strong>, the anvil's &ldquo;Too Expensive&rdquo; cap is bypassed.</li>
+        <li><strong>Bloomstone</strong> gains obsidian-grade blast resistance (1200) while a nearby pool holds charge.</li>
+      </ul>
+
+      <div class="pager">
+        <a href="blooms.html">&larr; Bloom chain</a>
+        <a href="magic.html">Bloom Magic &amp; FX &rarr;</a>
+      </div>
+
+    </div>
+
+    <div class="page-foot">
+      <span>Florarium &middot; in development &middot; Sparda team site</span>
+      <span>2026</span>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

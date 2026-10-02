@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rewards &amp; tables — Scripta</title>
+<meta name="description" content="Scripta reward reference: all eleven reward types with their fields, weighted reward tables, loot crates, validation rules and reward presets.">
+<link rel="icon" href="../assets/icon.png" type="image/png">
+<link rel="stylesheet" href="../assets/style.css">
+<meta name="theme-color" content="#101014">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rewards &amp; tables — Scripta">
+<meta property="og:description" content="Scripta reward reference: all eleven reward types with their fields, weighted reward tables, loot crates, validation rules and reward presets.">
+<noscript><style>@media (max-width: 900px){.sidebar{position:static;transform:none;height:auto;box-shadow:none}.topbar .burger{display:none}}</style></noscript>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="../index.html">
+      <img src="../assets/icon.png" alt="Scripta logo">
+      <span>
+        <span class="name">Scripta</span><br>
+        <span class="ver">v1.0.0</span>
+      </span>
+    </a>
+
+    <div class="nav-group">Team</div>
+    <a class="nav" href="../index.html">Team Home</a>
+    <a class="nav" href="../mods.html">All Mods</a>
+
+    <div class="nav-group">Mod docs</div>
+    <a class="nav" href="index.html">Scripta <span class="nav-badge on">Available</span></a>
+    <a class="nav" href="../florarium/index.html">Florarium <span class="nav-badge">In dev</span></a>
+    <a class="nav" href="../divinity/index.html">Divinity Music <span class="nav-badge">In dev</span></a>
+
+    <div class="nav-group">Getting started</div>
+    <a class="nav" href="index.html">Overview</a>
+    <a class="nav" href="install.html">Installation</a>
+    <a class="nav" href="commands.html">Commands &amp; keybinds</a>
+
+    <div class="nav-group">Authoring</div>
+    <a class="nav" href="quests.html">Quests &amp; categories</a>
+    <a class="nav" href="rewards.html">Rewards &amp; tables</a>
+    <a class="nav" href="editor.html">Editors</a>
+
+    <div class="nav-group">Reference</div>
+    <a class="nav" href="theming.html">GUI theme</a>
+    <a class="nav" href="files.html">Files &amp; storage</a>
+    <a class="nav" href="faq.html">FAQ</a>
+
+    <div class="sidebar-foot">
+      <a href="https://www.curseforge.com/minecraft/mc-mods/scripta">CurseForge</a> &middot;
+      <a href="../index.html">Team Site</a>
+      <br>Scripta v1.0.0 &middot; MC 1.21.1 &middot; Fabric
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">&#9776;</button>
+      <span class="label">Scripta docs &middot; Sparda</span>
+    </div>
+
+    <div class="content">
+
+      <h1>Rewards &amp; reward tables</h1>
+      <p class="lead">
+        A reward is an object with a <code>type</code> field. Scripta 1.0.0 ships
+        eleven types &mdash; ten that grant something, plus an explicit no-op
+        placeholder for padding weighted tables.
+      </p>
+
+      <div class="toc">
+        <div class="t">On this page</div>
+        <ol>
+          <li><a href="#types">Reward types</a></li>
+          <li><a href="#tables">Weighted reward tables</a></li>
+          <li><a href="#crates">Loot crates</a></li>
+          <li><a href="#choices">Choice rewards in depth</a></li>
+          <li><a href="#presets">Reward presets</a></li>
+          <li><a href="#validation">Validation rules</a></li>
+          <li><a href="#forward-compat">Unknown &amp; legacy rewards</a></li>
+        </ol>
+      </div>
+
+      <h2 id="types">Reward types</h2>
+
+      <p>Quick reference. Every field not marked optional is required.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Type</th><th>Fields</th><th>What happens</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>item</code></td>
+              <td><code>item</code> (req)<br><code>amount</code> = <code>1</code></td>
+              <td>
+                Gives items. Overflow that does not fit in your inventory is
+                <strong>dropped at your feet</strong>, never voided.
+                Valid range 1&ndash;9999.
+              </td>
+            </tr>
+            <tr>
+              <td><code>xp</code></td>
+              <td><code>amount</code> = <code>1</code></td>
+              <td>Gives XP points. Range 1&ndash;1000000.</td>
+            </tr>
+            <tr>
+              <td><code>xp_levels</code></td>
+              <td><code>levels</code> = <code>1</code></td>
+              <td>Gives XP <em>levels</em> directly. Range 1&ndash;1000.</td>
+            </tr>
+            <tr>
+              <td><code>command</code></td>
+              <td><code>command</code> (req)</td>
+              <td>
+                Runs a console command with you as the source &mdash; so
+                <code>/say</code>, <code>/give</code> and
+                <code>/effect</code> all work. Max 1024 characters.
+              </td>
+            </tr>
+            <tr>
+              <td><code>advancement</code></td>
+              <td><code>id</code> (req)</td>
+              <td>Awards the advancement, satisfying <strong>every</strong> criterion.</td>
+            </tr>
+            <tr>
+              <td><code>toast</code></td>
+              <td><code>message</code> (req)</td>
+              <td>Shows a client-side toast notification. Max 100 characters.</td>
+            </tr>
+            <tr>
+              <td><code>choice</code></td>
+              <td>
+                <code>options</code> = <code>[]</code><br>
+                <code>table</code> = <code>""</code><br>
+                <code>count</code> = <code>1</code>
+              </td>
+              <td>
+                <strong>Interactive.</strong> The player picks from a picker
+                screen. Never granted automatically.
+              </td>
+            </tr>
+            <tr>
+              <td><code>random</code></td>
+              <td><code>table</code> (req)</td>
+              <td>Rolls one entry from a weighted reward table.</td>
+            </tr>
+            <tr>
+              <td><code>all_table</code></td>
+              <td><code>table</code> (req)</td>
+              <td>Grants <strong>every</strong> entry in a table. Weights ignored.</td>
+            </tr>
+            <tr>
+              <td><code>loot_crate</code></td>
+              <td><code>table</code> (req)</td>
+              <td>
+                Gives a physical <em>Loot Crate</em> item. The player right-clicks
+                it to roll. Table must be crate-enabled.
+              </td>
+            </tr>
+            <tr>
+              <td><code>empty</code></td>
+              <td>&mdash;</td>
+              <td>Grants nothing. Exists so a table can have a "no prize" chance.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        <span class="t"><code>experience</code> is a legacy alias</span>
+        Old files using <code>{"type": "experience", "amount": 5}</code> still
+        load &mdash; they are treated as <code>xp</code>.
+      </div>
+
+      <h3>Examples</h3>
+
+      <div class="copy-wrap"><pre><code>"rewards": [
+  { "type": "item", "item": "minecraft:diamond", "amount": 3 },
+  { "type": "xp", "amount": 100 },
+  { "type": "xp_levels", "levels": 2 },
+  { "type": "command", "command": "give @s minecraft:diamond 1" },
+  { "type": "advancement", "id": "minecraft:story/root" },
+  { "type": "toast", "message": "Well done, adventurer!" }
+]</code></pre></div>
+
+      <h2 id="tables">Weighted reward tables</h2>
+
+      <p>
+        A reward table is a weighted pool. Reference it from a
+        <code>random</code>, <code>all_table</code>, <code>loot_crate</code> or
+        <code>choice</code> reward by its <code>id</code>.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Field</th><th>Type</th><th>Required</th><th>Default</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>id</code></td><td>string</td><td>Yes</td><td>&mdash;</td></tr>
+            <tr><td><code>name</code></td><td>string</td><td>No</td><td><code>""</code> (falls back to <code>id</code>)</td></tr>
+            <tr><td><code>entries</code></td><td>array</td><td>No</td><td><code>[]</code></td></tr>
+            <tr><td><code>entries[].reward</code></td><td>reward</td><td>Yes</td><td>&mdash;</td></tr>
+            <tr><td><code>entries[].weight</code></td><td>double</td><td>No</td><td><code>1.0</code></td></tr>
+            <tr><td><code>crate.enabled</code></td><td>bool</td><td>No</td><td><code>true</code> if <code>crate</code> is present, else <code>false</code></td></tr>
+            <tr><td><code>crate.name</code></td><td>string</td><td>No</td><td><code>""</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="copy-wrap"><pre><code>{
+  "id": "starter_loot",
+  "name": "Starter Loot",
+  "entries": [
+    { "reward": { "type": "item", "item": "minecraft:bread", "amount": 3 }, "weight": 40 },
+    { "reward": { "type": "item", "item": "minecraft:iron_ingot", "amount": 1 }, "weight": 25 },
+    { "reward": { "type": "item", "item": "minecraft:diamond", "amount": 1 }, "weight": 5 },
+    { "reward": { "type": "empty" }, "weight": 30 }
+  ],
+  "crate": { "enabled": true, "name": "Starter Crate" }
+}</code></pre></div>
+
+      <h3>How weights work</h3>
+
+      <p>
+        Weights are <strong>relative probabilities</strong>, not percentages, and
+        do not have to total 100. In the table above the four entries have
+        weights 40 / 25 / 5 / 30, totalling 100, so they roll at 40% / 25% / 5% /
+        30%. Double every weight and the odds stay identical.
+      </p>
+
+      <ul>
+        <li>Entries with <code>weight &lt;= 0</code> are excluded from the draw entirely.</li>
+        <li>If no entry has a positive weight, the roll finds nothing.</li>
+        <li><code>empty</code> entries are the idiomatic way to add a "you got nothing" chance.</li>
+      </ul>
+
+      <div class="note warn">
+        <span class="t">Tables are not datapack-loaded</span>
+        Unlike quests and categories, reward tables are <strong>not</strong> read
+        from <code>data/</code> folders and <code>/reload</code> will not pick up
+        a hand-written table file. They live in the editor store &mdash; see
+        <a href="files.html#store">Files &amp; storage</a>. Create them in the
+        web or in-game editor.
+      </div>
+
+      <h2 id="crates">Loot crates</h2>
+
+      <p>
+        A <code>loot_crate</code> reward gives the player a real
+        <em>Loot Crate</em> item instead of rolling immediately. Which table it
+        holds is stored on the item itself.
+      </p>
+
+      <ol>
+        <li>Enable <code>crate</code> on the table you want to hand out.</li>
+        <li>Give the crate via <code>{ "type": "loot_crate", "table": "&lt;id&gt;" }</code>.</li>
+        <li>The player right-clicks the crate to roll it once.</li>
+      </ol>
+
+      <div class="copy-wrap"><pre><code>{ "type": "loot_crate", "table": "starter_loot" }</code></pre></div>
+
+      <ul>
+        <li>Crates stack to 64.</li>
+        <li>The roll happens server-side when the player opens it.</li>
+        <li>Each open consumes one crate, unless the player is in creative mode.</li>
+        <li>A crate whose table has gone missing or is invalid is <strong>not</strong> consumed.</li>
+      </ul>
+
+      <div class="note">
+        <span class="t">Using the crate name</span>
+        Crate messages use the table's top-level <code>name</code> field (falling
+        back to its <code>id</code>). The <code>crate.name</code> field is stored
+        but not used for messages.
+      </div>
+
+      <h2 id="choices">Choice rewards in depth</h2>
+
+      <p>
+        A <code>choice</code> reward is the one interactive type: it is never
+        auto-granted, even when <code>auto_claim</code> is <code>true</code>. The
+        player opens a picker and selects an option (or several, up to
+        <code>count</code>).
+      </p>
+
+      <h3>Inline options</h3>
+      <div class="copy-wrap"><pre><code>{
+  "type": "choice",
+  "count": 1,
+  "options": [
+    { "type": "item", "item": "minecraft:golden_apple", "amount": 1 },
+    { "type": "item", "item": "minecraft:diamond", "amount": 2 }
+  ]
+}</code></pre></div>
+
+      <h3>From a table</h3>
+      <p>
+        Point <code>table</code> at a reward table instead and its entries become
+        the options. <code>empty</code> entries are filtered out, and weights are
+        ignored &mdash; the player chooses deliberately rather than gambling.
+      </p>
+      <div class="copy-wrap"><pre><code>{ "type": "choice", "table": "starter_loot", "count": 2 }</code></pre></div>
+
+      <div class="note danger">
+        <span class="t">No choices inside tables</span>
+        A <code>choice</code> reward cannot live inside a reward table. The editor
+        refuses to save it and the in-game claim path reports
+        <em>&ldquo;A choice reward inside a table must be claimed from a quest
+        directly.&rdquo;</em> Put choices on quests.
+      </div>
+
+      <h2 id="presets">Reward presets</h2>
+
+      <p>
+        Presets are reusable reward bundles you can insert into any quest with one
+        click. Three ship built in and cannot be deleted or overwritten:
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Preset</th><th>Contents</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Starter Kit</strong></td>
+              <td>5 bread, 5 XP</td>
+            </tr>
+            <tr>
+              <td><strong>Monster Hunter</strong></td>
+              <td>10 XP, 2 iron ingots</td>
+            </tr>
+            <tr>
+              <td><strong>Treasure</strong></td>
+              <td>1 golden apple, <code>give @s minecraft:diamond 1</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Your own presets are managed in the <strong>Reward presets</strong> panel
+        of either editor. Names must be 1&ndash;48 characters and cannot reuse a
+        built-in name.
+      </p>
+
+      <h2 id="validation">Validation rules</h2>
+
+      <p>
+        Editors validate rewards before saving and reject out-of-range values
+        rather than letting them reach the game. Key limits:
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Rule</th><th>Limit</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Item amount</td><td>1&ndash;9999</td></tr>
+            <tr><td>XP amount</td><td>1&ndash;1000000</td></tr>
+            <tr><td>XP levels</td><td>1&ndash;1000</td></tr>
+            <tr><td>Command length</td><td>1&ndash;1024 characters</td></tr>
+            <tr><td>Toast length</td><td>1&ndash;100 characters</td></tr>
+            <tr><td>Choice options</td><td>At least 2 inline options, or a table with entries</td></tr>
+            <tr><td>Choice count</td><td>1&ndash;64</td></tr>
+            <tr><td>Reward nesting depth</td><td>Max 3 in tables</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        A <code>loot_crate</code> reward must point at a table with
+        <code>crate.enabled</code> set to <code>true</code>, otherwise it is
+        rejected.
+      </p>
+
+      <h2 id="forward-compat">Unknown &amp; legacy rewards</h2>
+
+      <p>
+        Scripta is deliberately tolerant so a quest written for a newer version
+        does not break an older server:
+      </p>
+
+      <ul>
+        <li>An unrecognised <code>type</code> is preserved verbatim and displayed as <em>Unknown reward</em> rather than failing the quest.</li>
+        <li>One bad entry in a rewards array is skipped; the rest of the quest still loads.</li>
+        <li>The <code>experience</code> type is rewritten to <code>xp</code>.</li>
+        <li>Definitions round-trip cleanly, so unknown rewards survive a reload.</li>
+      </ul>
+
+      <div class="pager">
+        <a href="quests.html">&larr; Quests &amp; categories</a>
+        <a href="editor.html">Editors &rarr;</a>
+      </div>
+
+    </div>
+
+    <div class="page-foot">
+      <span>Scripta v1.0.0 &middot; Minecraft 1.21.1 &middot; Fabric</span>
+      <span>Docs for the 1.0 release</span>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

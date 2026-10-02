@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Discs &amp; tracks — Divinity Music · Sparda</title>
+<meta name="description" content="Divinity Music's seven custom discs: track lengths, comparator outputs, shapeless crafting recipes, and streamed sound events.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23201a2e'/%3E%3Ctext x='32' y='44' font-family='sans-serif' font-size='36' font-weight='bold' text-anchor='middle' fill='%23c9a6ff'%3ED%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<meta name="theme-color" content="#101014">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Discs &amp; tracks — Divinity Music · Sparda">
+<meta property="og:description" content="Divinity Music's seven custom discs: track lengths, comparator outputs, shapeless crafting recipes, and streamed sound events.">
+<noscript><style>@media (max-width: 900px){.sidebar{position:static;transform:none;height:auto;box-shadow:none}.topbar .burger{display:none}}</style></noscript>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark" aria-hidden="true">D</span>
+      <span>
+        <span class="name">Divinity Music</span><br>
+        <span class="ver">In development</span>
+      </span>
+    </a>
+
+    <div class="nav-group">Team</div>
+    <a class="nav" href="../index.html">Team Home</a>
+    <a class="nav" href="../mods.html">All Mods</a>
+
+    <div class="nav-group">Mod docs</div>
+    <a class="nav" href="../docs/index.html">Scripta <span class="nav-badge on">Available</span></a>
+    <a class="nav" href="../florarium/index.html">Florarium <span class="nav-badge">In dev</span></a>
+    <a class="nav" href="index.html">Divinity Music <span class="nav-badge">In dev</span></a>
+
+    <div class="nav-group">Divinity guide</div>
+    <a class="nav" href="index.html">Overview</a>
+    <a class="nav" href="discs.html">Discs &amp; tracks</a>
+    <a class="nav" href="listening.html">Listening experience</a>
+    <a class="nav" href="artifacts.html">Artifacts &amp; roadmap</a>
+
+    <div class="sidebar-foot">
+      <a href="../index.html">Team Site</a>
+      <br>Divinity Music &middot; in development &middot; MC 1.21.1
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">&#9776;</button>
+      <span class="label">Divinity docs &middot; Sparda</span>
+    </div>
+
+    <div class="content">
+
+      <h1>Discs &amp; tracks</h1>
+      <p class="lead">
+        Seven custom discs, each a Rare single-stack jukebox-playable item with
+        its own sound event, jukebox song, and shapeless crafting recipe.
+      </p>
+
+      <div class="toc">
+        <div class="t">On this page</div>
+        <ol>
+          <li><a href="#tracks">The seven tracks</a></li>
+          <li><a href="#recipes">Recipes</a></li>
+          <li><a href="#sound">Sound setup</a></li>
+        </ol>
+      </div>
+
+      <h2 id="tracks">The seven tracks</h2>
+
+      <p>
+        Lengths and comparator outputs come from the jukebox song data; titles
+        from the English localisation.
+      </p>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Disc</th><th>Jukebox title</th><th>Length</th><th>Comparator</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>music_disc_whiteferrari</code></td><td>Divinity - White Ferrari</td><td>4:09</td><td><code>11</code></td></tr>
+          <tr><td><code>music_disc_deathmetal</code></td><td>Divinity - Death Metal</td><td>4:22</td><td><code>13</code></td></tr>
+          <tr><td><code>music_disc_coffeebean</code></td><td>Divinity - Coffee Bean</td><td>3:29</td><td><code>10</code></td></tr>
+          <tr><td><code>music_disc_onemore</code></td><td>Divinity - One More</td><td>1:39</td><td><code>6</code></td></tr>
+          <tr><td><code>music_disc_woods</code></td><td>Divinity - Woods</td><td>4:46</td><td><code>14</code></td></tr>
+          <tr><td><code>music_disc_kuroi_namida</code></td><td>Divinity - &#40658;&#12356;&#涙;</td><td>5:07</td><td><code>15</code></td></tr>
+          <tr><td><code>music_disc_majula</code></td><td>Divinity - Majula</td><td>3:19</td><td><code>7</code></td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2 id="recipes">Recipes</h2>
+
+      <p>
+        All seven are <strong>shapeless</strong> crafting recipes in the
+        <code>divinity_music_discs</code> group. The shared base is an amethyst
+        shard, an echo shard, a disc fragment 5, a diamond, and a dye — with
+        three exceptions called out below:
+      </p>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Disc</th><th>Ingredients</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>White Ferrari</td><td>Amethyst shard, echo shard, disc fragment 5, diamond, <strong>white dye</strong></td></tr>
+          <tr><td>Death Metal</td><td>Amethyst shard, echo shard, disc fragment 5, diamond, <strong>black dye</strong></td></tr>
+          <tr><td>Coffee Bean</td><td>Amethyst shard, echo shard, disc fragment 5, diamond, <strong>brown dye</strong></td></tr>
+          <tr><td>One More</td><td>Amethyst shard, echo shard, disc fragment 5, diamond, <strong>yellow dye</strong></td></tr>
+          <tr><td>Woods</td><td><strong>Oak log</strong> (instead of amethyst shard), echo shard, disc fragment 5, diamond, <strong>green dye</strong></td></tr>
+          <tr><td>&#40658;&#12356;&#涙;</td><td>Amethyst shard, echo shard, disc fragment 5, diamond, <strong>crying obsidian</strong>, <strong>black dye</strong></td></tr>
+          <tr><td>Majula</td><td>Amethyst shard, echo shard, disc fragment 5, diamond, <strong>nether star</strong>, <strong>emerald</strong>, <strong>gold ingot</strong></td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2 id="sound">Sound setup</h2>
+
+      <ul>
+        <li>Seven sound events (<code>music.whiteferrari</code> through <code>music.majula</code>), each pointing at its streamed <code>.ogg</code> file (<code>stream: true</code>).</li>
+        <li>Each track has its own subtitle line (e.g. &ldquo;White Ferrari plays&rdquo;, &ldquo;Death Metal rumbles&rdquo;).</li>
+        <li>Item names, track descriptions, and jukebox titles are localised in English and Italian.</li>
+      </ul>
+
+      <div class="pager">
+        <a href="index.html">&larr; Overview</a>
+        <a href="listening.html">Listening experience &rarr;</a>
+      </div>
+
+    </div>
+
+    <div class="page-foot">
+      <span>Divinity Music &middot; in development &middot; Sparda team site</span>
+      <span>2026</span>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

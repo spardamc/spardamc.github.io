@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Installation — Scripta</title>
+<meta name="description" content="How to install Scripta 1.0.0 on Minecraft 1.21.1 Fabric, required dependencies, server setup and manual installation.">
+<link rel="icon" href="../assets/icon.png" type="image/png">
+<link rel="stylesheet" href="../assets/style.css">
+<meta name="theme-color" content="#101014">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Installation — Scripta">
+<meta property="og:description" content="How to install Scripta 1.0.0 on Minecraft 1.21.1 Fabric, required dependencies, server setup and manual installation.">
+<noscript><style>@media (max-width: 900px){.sidebar{position:static;transform:none;height:auto;box-shadow:none}.topbar .burger{display:none}}</style></noscript>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="../index.html">
+      <img src="../assets/icon.png" alt="Scripta logo">
+      <span>
+        <span class="name">Scripta</span><br>
+        <span class="ver">v1.0.0</span>
+      </span>
+    </a>
+
+    <div class="nav-group">Team</div>
+    <a class="nav" href="../index.html">Team Home</a>
+    <a class="nav" href="../mods.html">All Mods</a>
+
+    <div class="nav-group">Mod docs</div>
+    <a class="nav" href="index.html">Scripta <span class="nav-badge on">Available</span></a>
+    <a class="nav" href="../florarium/index.html">Florarium <span class="nav-badge">In dev</span></a>
+    <a class="nav" href="../divinity/index.html">Divinity Music <span class="nav-badge">In dev</span></a>
+
+    <div class="nav-group">Getting started</div>
+    <a class="nav" href="index.html">Overview</a>
+    <a class="nav" href="install.html">Installation</a>
+    <a class="nav" href="commands.html">Commands &amp; keybinds</a>
+
+    <div class="nav-group">Authoring</div>
+    <a class="nav" href="quests.html">Quests &amp; categories</a>
+    <a class="nav" href="rewards.html">Rewards &amp; tables</a>
+    <a class="nav" href="editor.html">Editors</a>
+
+    <div class="nav-group">Reference</div>
+    <a class="nav" href="theming.html">GUI theme</a>
+    <a class="nav" href="files.html">Files &amp; storage</a>
+    <a class="nav" href="faq.html">FAQ</a>
+
+    <div class="sidebar-foot">
+      <a href="https://www.curseforge.com/minecraft/mc-mods/scripta">CurseForge</a> &middot;
+      <a href="../index.html">Team Site</a>
+      <br>Scripta v1.0.0 &middot; MC 1.21.1 &middot; Fabric
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">&#9776;</button>
+      <span class="label">Scripta docs &middot; Sparda</span>
+    </div>
+
+    <div class="content">
+
+      <h1>Installation</h1>
+      <p class="lead">
+        Scripta 1.0.0 targets <strong>Minecraft 1.21.1</strong> on
+        <strong>Fabric</strong>. Install it on the client, the server, or both.
+      </p>
+
+      <div class="toc">
+        <div class="t">On this page</div>
+        <ol>
+          <li><a href="#requirements">Requirements</a></li>
+          <li><a href="#curseforge">Installing with CurseForge / Prism</a></li>
+          <li><a href="#manual">Manual installation</a></li>
+          <li><a href="#server">Dedicated server setup</a></li>
+          <li><a href="#webport">Changing the web editor port</a></li>
+          <li><a href="#verify">Verifying the install</a></li>
+        </ol>
+      </div>
+
+      <h2 id="requirements">Requirements</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Component</th><th>Version</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Minecraft</td>
+              <td><code>1.21.1</code></td>
+              <td>Scripta does not load on other versions.</td>
+            </tr>
+            <tr>
+              <td>Fabric Loader</td>
+              <td><code>&gt;= 0.16.9</code></td>
+              <td>Required.</td>
+            </tr>
+            <tr>
+              <td>Fabric API</td>
+              <td>any</td>
+              <td>Required, install separately.</td>
+            </tr>
+            <tr>
+              <td>Architectury API</td>
+              <td>any</td>
+              <td>Required, install separately.</td>
+            </tr>
+            <tr>
+              <td>OwoLib</td>
+              <td>&mdash;</td>
+              <td><strong>Bundled</strong> inside the Scripta jar. Nothing to install.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        <span class="t">OwoLib is already inside</span>
+        The release jar declares OwoLib as a nested jar. If you also drop a
+        separate OwoLib jar into <code>mods/</code> you will get a duplicate-mod
+        error &mdash; pick one or the other.
+      </div>
+
+      <h2 id="curseforge">Installing with CurseForge / Prism</h2>
+
+      <ol>
+        <li>Open the <a href="https://www.curseforge.com/minecraft/mc-mods/scripta">Scripta page on CurseForge</a>.</li>
+        <li>Choose the <strong>1.21.1</strong> file: <code>scripta-fabric-1.21.1-1.0.0.jar</code>.</li>
+        <li>Create or edit a <strong>Fabric 1.21.1</strong> profile and add Scripta to it.</li>
+        <li>Add <strong>Fabric API</strong> and <strong>Architectury API</strong> to the same profile.</li>
+        <li>Launch.</li>
+      </ol>
+
+      <h2 id="manual">Manual installation</h2>
+
+      <ol>
+        <li>Install Fabric Loader for Minecraft <code>1.21.1</code> if you have not already.</li>
+        <li>
+          Download <code>scripta-fabric-1.21.1-1.0.0.jar</code> from
+          <a href="https://www.curseforge.com/minecraft/mc-mods/scripta">CurseForge</a>.
+        </li>
+        <li>
+          Copy it into your instance's <code>mods</code> folder, alongside your
+          <code>fabric-api</code> and <code>architectury-api</code> jars.
+        </li>
+        <li>Launch Minecraft using the Fabric profile.</li>
+      </ol>
+
+      <p>The <code>mods</code> folder is usually at:</p>
+      <div class="foot-snip">Windows   %appdata%\.minecraft\mods
+macOS     ~/Library/Application Support/minecraft/mods
+Linux     ~/.minecraft/mods
+
+Modrinth / Prism instances:  &lt;launcher&gt;/instances/&lt;profile&gt;/.minecraft/mods</div>
+
+      <h2 id="server">Dedicated server setup</h2>
+
+      <p>
+        Put the same three jars in your server's <code>mods</code> folder &mdash;
+        Scripta, Fabric API and Architectury API &mdash; then start the server.
+      </p>
+
+      <div class="note">
+        <span class="t">Players need it too</span>
+        Scripta renders a client-side quest book. Anyone joining your server must
+        install the client jar too, or they will see no quest book.
+      </div>
+
+      <p>Scripta is present on both sides:</p>
+      <ul>
+        <li><strong>Server</strong> owns quest definitions and player progress, and hosts the web editor.</li>
+        <li><strong>Client</strong> receives definitions and progress on join, and renders the quest book GUI.</li>
+      </ul>
+
+      <h2 id="webport">Changing the web editor port</h2>
+
+      <p>
+        The web editor listens on port <code>25566</code> by default. Override it
+        with a JVM system property on the server:
+      </p>
+
+      <div class="copy-wrap"><pre><code>java -Dscripta.webport=8080 -Xmx4G -jar server.jar nogui</code></pre></div>
+
+      <div class="note warn">
+        <span class="t">Expose it carefully</span>
+        The editor binds on all interfaces. Anyone who has the token can edit your
+        quests, so do not port-forward it to the open internet without a reverse
+        proxy or firewall rule.
+      </div>
+
+      <h2 id="verify">Verifying the install</h2>
+
+      <p>In game, run:</p>
+
+      <div class="copy-wrap"><pre><code>/scripta list</code></pre></div>
+
+      <p>
+        You should see the three categories that ship with the mod, each with no
+        quests yet:
+      </p>
+
+      <div class="foot-snip">== Getting Started ==
+== Combat Basics ==
+== Exploration ==</div>
+
+      <div class="note">
+        <span class="t">No quests yet is expected</span>
+        Scripta ships three starter <em>categories</em> but no quests. Quests are
+        yours to author &mdash; see <a href="quests.html">Quests &amp; categories</a>.
+      </div>
+
+      <p>Then press <kbd>G</kbd> or run <code>/quests</code> to open the quest book.</p>
+
+      <div class="pager">
+        <a href="index.html">&larr; Overview</a>
+        <a href="commands.html">Commands &amp; keybinds &rarr;</a>
+      </div>
+
+    </div>
+
+    <div class="page-foot">
+      <span>Scripta v1.0.0 &middot; Minecraft 1.21.1 &middot; Fabric</span>
+      <span>Docs for the 1.0 release</span>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

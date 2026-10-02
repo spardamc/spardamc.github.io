@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Commands &amp; keybinds — Scripta</title>
+<meta name="description" content="Complete command and keybind reference for Scripta: /scripta sync, list, web, reset, /quests, /questedit and the default G keybind.">
+<link rel="icon" href="../assets/icon.png" type="image/png">
+<link rel="stylesheet" href="../assets/style.css">
+<meta name="theme-color" content="#101014">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Commands &amp; keybinds — Scripta">
+<meta property="og:description" content="Complete command and keybind reference for Scripta: /scripta sync, list, web, reset, /quests, /questedit and the default G keybind.">
+<noscript><style>@media (max-width: 900px){.sidebar{position:static;transform:none;height:auto;box-shadow:none}.topbar .burger{display:none}}</style></noscript>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="../index.html">
+      <img src="../assets/icon.png" alt="Scripta logo">
+      <span>
+        <span class="name">Scripta</span><br>
+        <span class="ver">v1.0.0</span>
+      </span>
+    </a>
+
+    <div class="nav-group">Team</div>
+    <a class="nav" href="../index.html">Team Home</a>
+    <a class="nav" href="../mods.html">All Mods</a>
+
+    <div class="nav-group">Mod docs</div>
+    <a class="nav" href="index.html">Scripta <span class="nav-badge on">Available</span></a>
+    <a class="nav" href="../florarium/index.html">Florarium <span class="nav-badge">In dev</span></a>
+    <a class="nav" href="../divinity/index.html">Divinity Music <span class="nav-badge">In dev</span></a>
+
+    <div class="nav-group">Getting started</div>
+    <a class="nav" href="index.html">Overview</a>
+    <a class="nav" href="install.html">Installation</a>
+    <a class="nav" href="commands.html">Commands &amp; keybinds</a>
+
+    <div class="nav-group">Authoring</div>
+    <a class="nav" href="quests.html">Quests &amp; categories</a>
+    <a class="nav" href="rewards.html">Rewards &amp; tables</a>
+    <a class="nav" href="editor.html">Editors</a>
+
+    <div class="nav-group">Reference</div>
+    <a class="nav" href="theming.html">GUI theme</a>
+    <a class="nav" href="files.html">Files &amp; storage</a>
+    <a class="nav" href="faq.html">FAQ</a>
+
+    <div class="sidebar-foot">
+      <a href="https://www.curseforge.com/minecraft/mc-mods/scripta">CurseForge</a> &middot;
+      <a href="../index.html">Team Site</a>
+      <br>Scripta v1.0.0 &middot; MC 1.21.1 &middot; Fabric
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">&#9776;</button>
+      <span class="label">Scripta docs &middot; Sparda</span>
+    </div>
+
+    <div class="content">
+
+      <h1>Commands &amp; keybinds</h1>
+      <p class="lead">
+        Everything Scripta adds to your command list and keybind settings, in one
+        place. Operator level 2 is required for anything that changes quests.
+      </p>
+
+      <div class="toc">
+        <div class="t">On this page</div>
+        <ol>
+          <li><a href="#server-commands">/scripta — server commands</a></li>
+          <li><a href="#client-commands">Client commands</a></li>
+          <li><a href="#keybinds">Keybinds</a></li>
+          <li><a href="#permissions">Permissions &amp; enforcement</a></li>
+          <li><a href="#reload">Reloading</a></li>
+        </ol>
+      </div>
+
+      <h2 id="server-commands"><code>/scripta</code> — server commands</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Command</th><th>Who</th><th>What it does</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>/scripta list</code></td>
+              <td>Anyone</td>
+              <td>
+                Prints every category and quest, sorted by category order then
+                quest title. Completed quests are marked <code>[x]</code>, the rest
+                <code>[ ]</code>. Prints <code>No quests loaded.</code> if nothing is loaded.
+              </td>
+            </tr>
+            <tr>
+              <td><code>/scripta sync</code></td>
+              <td>Anyone</td>
+              <td>
+                Re-sends your quest progress <em>and</em> the quest definitions to
+                you. Use it if your quest book looks out of date.
+              </td>
+            </tr>
+            <tr>
+              <td><code>/scripta web</code></td>
+              <td>Op level 2</td>
+              <td>
+                Sends the clickable web-editor link in chat. Says
+                <code>The web editor is not running.</code> if the port could not
+                be bound.
+              </td>
+            </tr>
+            <tr>
+              <td><code>/scripta reset &lt;player&gt;</code></td>
+              <td>Op level 2</td>
+              <td>
+                Clears another player's quest progress and re-syncs them. The
+                player must be online.
+              </td>
+            </tr>
+            <tr>
+              <td><code>/scripta reset</code></td>
+              <td>Op level 2</td>
+              <td>Clears your own quest progress.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note warn">
+        <span class="t"><code>/scripta reset</code> does not clear claim records</span>
+        Reset clears completed quests and objective counters, but the record of
+        which <em>rewards</em> were already claimed is kept. If you reset a player
+        and they had already claimed a manual-claim reward, that reward will still
+        read as claimed. Edit <code>scripta_progress.dat</code> directly if you
+        need a truly clean slate.
+      </div>
+
+      <h2 id="client-commands">Client commands</h2>
+
+      <p>These run on your client only &mdash; they never reach the server.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Command</th><th>What it does</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>/quests</code></td>
+              <td>Opens the quest book.</td>
+            </tr>
+            <tr>
+              <td><code>/questedit</code></td>
+              <td>
+                Opens the full in-game editor. Opens for anyone, but the server
+                rejects every edit from non-operators with
+                <code>You need operator level 2 to edit quests.</code>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="keybinds">Keybinds</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Action</th><th>Default</th><th>Translation key</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Open the quest book</td>
+              <td><kbd>G</kbd></td>
+              <td><code>key.scripta.quests</code> &mdash; shown as <em>Open Quests</em></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Rebind it under <em>Options &rarr; Controls</em> in the <strong>Scripta</strong>
+        category. The keybind only fires while no screen is open.
+      </p>
+
+      <h2 id="permissions">Permissions &amp; enforcement</h2>
+
+      <ul>
+        <li><code>list</code> and <code>sync</code> need no permission level.</li>
+        <li><code>web</code> and both forms of <code>reset</code> require <strong>operator level 2</strong>.</li>
+        <li>
+          Every edit from the in-game or web editor is re-checked server-side on
+          receipt. Client-side checks are cosmetic &mdash; a modified client cannot
+          save quests without op.
+        </li>
+        <li>
+          Operators receive the web-editor link automatically in chat when they
+          join while the server is running.
+        </li>
+      </ul>
+
+      <h2 id="reload">Reloading</h2>
+
+      <p>
+        There is no <code>/scripta reload</code>. Quest and category JSON is read
+        through the normal datapack reload system, so use vanilla:
+      </p>
+
+      <div class="copy-wrap"><pre><code>/reload</code></pre></div>
+
+      <p>
+        Edits made in either editor apply immediately without a reload &mdash; they
+        are broadcast to every connected player within a second. Quests you
+        <em>deleted</em> in an editor stay deleted even after <code>/reload</code>.
+      </p>
+
+      <div class="pager">
+        <a href="install.html">&larr; Installation</a>
+        <a href="quests.html">Quests &amp; categories &rarr;</a>
+      </div>
+
+    </div>
+
+    <div class="page-foot">
+      <span>Scripta v1.0.0 &middot; Minecraft 1.21.1 &middot; Fabric</span>
+      <span>Docs for the 1.0 release</span>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

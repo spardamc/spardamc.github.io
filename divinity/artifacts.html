@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Artifacts &amp; roadmap — Divinity Music · Sparda</title>
+<meta name="description" content="Divinity Music's planned divine artifacts and the five-step development roadmap: what is built and what is still ahead.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23201a2e'/%3E%3Ctext x='32' y='44' font-family='sans-serif' font-size='36' font-weight='bold' text-anchor='middle' fill='%23c9a6ff'%3ED%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<meta name="theme-color" content="#101014">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Artifacts &amp; roadmap — Divinity Music · Sparda">
+<meta property="og:description" content="Divinity Music's planned divine artifacts and the five-step development roadmap: what is built and what is still ahead.">
+<noscript><style>@media (max-width: 900px){.sidebar{position:static;transform:none;height:auto;box-shadow:none}.topbar .burger{display:none}}</style></noscript>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark" aria-hidden="true">D</span>
+      <span>
+        <span class="name">Divinity Music</span><br>
+        <span class="ver">In development</span>
+      </span>
+    </a>
+
+    <div class="nav-group">Team</div>
+    <a class="nav" href="../index.html">Team Home</a>
+    <a class="nav" href="../mods.html">All Mods</a>
+
+    <div class="nav-group">Mod docs</div>
+    <a class="nav" href="../docs/index.html">Scripta <span class="nav-badge on">Available</span></a>
+    <a class="nav" href="../florarium/index.html">Florarium <span class="nav-badge">In dev</span></a>
+    <a class="nav" href="index.html">Divinity Music <span class="nav-badge">In dev</span></a>
+
+    <div class="nav-group">Divinity guide</div>
+    <a class="nav" href="index.html">Overview</a>
+    <a class="nav" href="discs.html">Discs &amp; tracks</a>
+    <a class="nav" href="listening.html">Listening experience</a>
+    <a class="nav" href="artifacts.html">Artifacts &amp; roadmap</a>
+
+    <div class="sidebar-foot">
+      <a href="../index.html">Team Site</a>
+      <br>Divinity Music &middot; in development &middot; MC 1.21.1
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">&#9776;</button>
+      <span class="label">Divinity docs &middot; Sparda</span>
+    </div>
+
+    <div class="content">
+
+      <h1>Artifacts &amp; roadmap</h1>
+      <p class="lead">
+        Everything on this page is <strong>roadmap, not status</strong>: planned
+        work described in the mod's own planning doc, not finished features.
+      </p>
+
+      <div class="toc">
+        <div class="t">On this page</div>
+        <ol>
+          <li><a href="#artifacts">Planned artifacts</a></li>
+          <li><a href="#roadmap">The five steps</a></li>
+          <li><a href="#client">Planned client work</a></li>
+        </ol>
+      </div>
+
+      <h2 id="artifacts">Planned artifacts</h2>
+
+      <div class="note warn">
+        <span class="t">Not yet in the build</span>
+        Only the seven discs are registered items today. The names below exist
+        in asset or language files, or in the roadmap — none of them is a
+        working item yet.
+      </div>
+
+      <p>
+        The roadmap plans <strong>unique divine items with active or passive
+        behaviours</strong> — item component APIs or event listeners where
+        specialised rendering or particle effects are needed — implemented after
+        the disc registries. It names an <strong>amulet</strong> among them.
+        Names already present in asset or language files but <em>not</em>
+        registered as items include the <strong>Violastro</strong> and the
+        <strong>Black Vinyl</strong> (a violastro/black vinyl texture is also
+        called out in the asset plan). Treat all of these as reserved names for
+        future artifacts, not as content you can obtain.
+      </p>
+
+      <p>
+        Item acquisition is also still being designed: craftable recipes and
+        acquisition methods via data generation or custom JSON recipe files are
+        a roadmap step, as is registering further item groups or creative tabs.
+      </p>
+
+      <h2 id="roadmap">The five steps</h2>
+
+      <ol>
+        <li><strong>Environment &amp; mod initialisation</strong> — Fabric on Minecraft 1.21.11 with Java 21, mod metadata (mod id <code>divinity</code>), entrypoints, and the <code>fabric-api</code> dependency.</li>
+        <li><strong>Asset integration</strong> — textures under <code>assets/divinity/textures/</code>, item model JSON files, and <code>.ogg</code> tracks wired through the <code>sounds.json</code> registry.</li>
+        <li><strong>Item &amp; sound registries</strong> — custom sound events, the custom RecordItem discs, and English/Italian localisations for item names and jukebox track titles.</li>
+        <li><strong>Custom logic &amp; data generation</strong> — behaviours for the divine items, recipes and acquisition methods, item groups and creative tabs. <em>Roadmap.</em></li>
+        <li><strong>Testing, build &amp; integration</strong> — local client verification (item textures, sound playback, crash-free compatibility with Sodium and Iris), then compiling the standalone Fabric jar. <em>Roadmap.</em></li>
+      </ol>
+
+      <h2 id="client">Planned client work</h2>
+
+      <ul>
+        <li>Jukebox song tooltips.</li>
+        <li>Particle and rendering effects for divine items.</li>
+        <li>Sodium and Iris compatibility verification.</li>
+      </ul>
+
+      <div class="pager">
+        <a href="listening.html">&larr; Listening experience</a>
+        <a href="../mods.html">All Mods &rarr;</a>
+      </div>
+
+    </div>
+
+    <div class="page-foot">
+      <span>Divinity Music &middot; in development &middot; Sparda team site</span>
+      <span>2026</span>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

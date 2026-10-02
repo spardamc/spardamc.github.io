@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scripta — Documentation</title>
+<meta name="description" content="Documentation for Scripta, a data-driven global questing mod for Minecraft 1.21.1 (Fabric). Quests, rewards, reward tables, editors and theming.">
+<link rel="icon" href="../assets/icon.png" type="image/png">
+<link rel="stylesheet" href="../assets/style.css">
+<meta name="theme-color" content="#101014">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Scripta — Documentation">
+<meta property="og:description" content="Documentation for Scripta, a data-driven global questing mod for Minecraft 1.21.1 (Fabric). Quests, rewards, reward tables, editors and theming.">
+<noscript><style>@media (max-width: 900px){.sidebar{position:static;transform:none;height:auto;box-shadow:none}.topbar .burger{display:none}}</style></noscript>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="../index.html">
+      <img src="../assets/icon.png" alt="Scripta logo">
+      <span>
+        <span class="name">Scripta</span><br>
+        <span class="ver">v1.0.0</span>
+      </span>
+    </a>
+
+    <div class="nav-group">Team</div>
+    <a class="nav" href="../index.html">Team Home</a>
+    <a class="nav" href="../mods.html">All Mods</a>
+
+    <div class="nav-group">Mod docs</div>
+    <a class="nav" href="index.html">Scripta <span class="nav-badge on">Available</span></a>
+    <a class="nav" href="../florarium/index.html">Florarium <span class="nav-badge">In dev</span></a>
+    <a class="nav" href="../divinity/index.html">Divinity Music <span class="nav-badge">In dev</span></a>
+
+    <div class="nav-group">Getting started</div>
+    <a class="nav" href="index.html">Overview</a>
+    <a class="nav" href="install.html">Installation</a>
+    <a class="nav" href="commands.html">Commands &amp; keybinds</a>
+
+    <div class="nav-group">Authoring</div>
+    <a class="nav" href="quests.html">Quests &amp; categories</a>
+    <a class="nav" href="rewards.html">Rewards &amp; tables</a>
+    <a class="nav" href="editor.html">Editors</a>
+
+    <div class="nav-group">Reference</div>
+    <a class="nav" href="theming.html">GUI theme</a>
+    <a class="nav" href="files.html">Files &amp; storage</a>
+    <a class="nav" href="faq.html">FAQ</a>
+
+    <div class="sidebar-foot">
+      <a href="https://www.curseforge.com/minecraft/mc-mods/scripta">CurseForge</a> &middot;
+      <a href="../index.html">Team Site</a>
+      <br>Scripta v1.0.0 &middot; MC 1.21.1
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">&#9776;</button>
+      <span class="label">Scripta docs &middot; Sparda</span>
+    </div>
+
+    <div class="content">
+
+      <div class="hero">
+        <h1>Scripta</h1>
+        <p class="lead">
+          A data-driven <strong>global questing mod</strong> for Minecraft 1.21.1.
+          Author quests as JSON, hand them out as items, XP, commands, advancements,
+          weighted loot tables or interactive choices &mdash; and let players work
+          through them in an in-game quest book.
+        </p>
+
+        <div class="badges">
+          <span class="badge on">v1.0.0</span>
+          <span class="badge">Minecraft 1.21.1</span>
+          <span class="badge">Fabric</span>
+          <span class="badge">Architectury</span>
+          <span class="badge">MIT License</span>
+        </div>
+
+        <div class="btn-row">
+          <a class="btn primary" href="https://www.curseforge.com/minecraft/mc-mods/scripta">Download on CurseForge</a>
+          <a class="btn" href="install.html">Installation</a>
+          <a class="btn" href="quests.html">Start authoring</a>
+        </div>
+      </div>
+
+      <div class="version-strip">
+        <div>Latest release <b>1.0.0</b></div>
+        <div>Mod id <b>scripta</b></div>
+        <div>File <b>scripta-fabric-1.21.1-1.0.0.jar</b></div>
+        <div>Client &amp; server</div>
+      </div>
+
+      <h2>What Scripta does</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3 class="card-title">Global, data-driven quests</h3>
+          <p>Quests and categories live as JSON in your datapack, so they are
+             identical on every world and server &mdash; only player progress is per-world.</p>
+          <a href="quests.html">Quest reference &rarr;</a>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Five objective types</h3>
+          <p>Break blocks, kill entities, collect items, reach custom stats and
+             grant advancements &mdash; each with its own required count.</p>
+          <a href="quests.html#objectives">Objectives &rarr;</a>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Eleven reward types</h3>
+          <p>Items, XP, XP levels, commands, advancements, toasts, weighted
+             tables, loot crates and interactive player choices.</p>
+          <a href="rewards.html">Rewards reference &rarr;</a>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Weighted reward tables</h3>
+          <p>Roll one prize, grant them all, or hand out a physical loot crate
+             item the player opens themselves.</p>
+          <a href="rewards.html#tables">Reward tables &rarr;</a>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Browser web editor</h3>
+          <p>Operators get a tokenised link on join. Edit quests, categories,
+             tables, presets, icons and theme from a browser &mdash; live.</p>
+          <a href="editor.html#web-editor">Web editor &rarr;</a>
+        </div>
+        <div class="card">
+          <h3 class="card-title">In-game editor</h3>
+          <p>A full quest editor built into the game, behind operator level 2,
+             for when you would rather not leave Minecraft.</p>
+          <a href="editor.html#in-game-editor">In-game editor &rarr;</a>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Per-player progress</h3>
+          <p>Completion, objective counters and claimed rewards persist per
+             player in world <code>SavedData</code>, synced on join.</p>
+          <a href="files.html#progress">Where data lives &rarr;</a>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Themeable GUI</h3>
+          <p>Per-pane surfaces, colours, sizes and widget styles for the quest
+             book &mdash; including your own background textures.</p>
+          <a href="theming.html">Theme reference &rarr;</a>
+        </div>
+      </div>
+
+      <h2>Five minute setup</h2>
+
+      <ol>
+        <li>
+          Install <strong>Scripta 1.0.0</strong> plus <strong>Fabric API</strong> and
+          <strong>Architectury API</strong>. OwoLib ships inside the Scripta jar.
+          See <a href="install.html">Installation</a>.
+        </li>
+        <li>
+          Start a world and run <code>/scripta list</code> to confirm the three
+          starter categories loaded.
+        </li>
+        <li>
+          Op yourself, then run <code>/scripta web</code> and click the link in
+          chat to open the editor. (Or use <code>/questedit</code> in-game.)
+        </li>
+        <li>
+          Put a quest in the <strong>Getting Started</strong> category, add an
+          objective and a reward, and press <em>Save</em>.
+        </li>
+        <li>
+          Press <kbd>G</kbd> (or run <code>/quests</code>) to open the quest book
+          and see your quest appear instantly.
+        </li>
+      </ol>
+
+      <div class="note">
+        <span class="t">Progress is per player, content is global</span>
+        Quests are read from datapacks and shared by everyone. Deleting a quest
+        JSON prunes it from every player's completed list on the next tick.
+      </div>
+
+      <h2>Who is it for?</h2>
+
+      <ul>
+        <li><strong>Server operators</strong> who want a quest book without hand-writing an entire quest engine.</li>
+        <li><strong>Pack authors</strong> who prefer plain JSON over an in-world node graph.</li>
+        <li><strong>Players</strong> on a server that already runs Scripta &mdash; the client jar is all you need.</li>
+      </ul>
+
+      <div class="pager">
+        <a href="install.html">&larr; Installation</a>
+        <a href="commands.html">Commands &amp; keybinds &rarr;</a>
+      </div>
+
+    </div>
+
+    <div class="page-foot">
+      <span>Scripta v1.0.0 &middot; Minecraft 1.21.1 &middot; Fabric</span>
+      <span>Docs for the 1.0 release</span>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

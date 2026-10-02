@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Files &amp; storage — Scripta</title>
+<meta name="description" content="Where Scripta stores quest content, progress, theme and uploaded icons on disk, plus the store format and how per-world editing works.">
+<link rel="icon" href="../assets/icon.png" type="image/png">
+<link rel="stylesheet" href="../assets/style.css">
+<meta name="theme-color" content="#101014">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Files &amp; storage — Scripta">
+<meta property="og:description" content="Where Scripta stores quest content, progress, theme and uploaded icons on disk, plus the store format and how per-world editing works.">
+<noscript><style>@media (max-width: 900px){.sidebar{position:static;transform:none;height:auto;box-shadow:none}.topbar .burger{display:none}}</style></noscript>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="../index.html">
+      <img src="../assets/icon.png" alt="Scripta logo">
+      <span>
+        <span class="name">Scripta</span><br>
+        <span class="ver">v1.0.0</span>
+      </span>
+    </a>
+
+    <div class="nav-group">Team</div>
+    <a class="nav" href="../index.html">Team Home</a>
+    <a class="nav" href="../mods.html">All Mods</a>
+
+    <div class="nav-group">Mod docs</div>
+    <a class="nav" href="index.html">Scripta <span class="nav-badge on">Available</span></a>
+    <a class="nav" href="../florarium/index.html">Florarium <span class="nav-badge">In dev</span></a>
+    <a class="nav" href="../divinity/index.html">Divinity Music <span class="nav-badge">In dev</span></a>
+
+    <div class="nav-group">Getting started</div>
+    <a class="nav" href="index.html">Overview</a>
+    <a class="nav" href="install.html">Installation</a>
+    <a class="nav" href="commands.html">Commands &amp; keybinds</a>
+
+    <div class="nav-group">Authoring</div>
+    <a class="nav" href="quests.html">Quests &amp; categories</a>
+    <a class="nav" href="rewards.html">Rewards &amp; tables</a>
+    <a class="nav" href="editor.html">Editors</a>
+
+    <div class="nav-group">Reference</div>
+    <a class="nav" href="theming.html">GUI theme</a>
+    <a class="nav" href="files.html">Files &amp; storage</a>
+    <a class="nav" href="faq.html">FAQ</a>
+
+    <div class="sidebar-foot">
+      <a href="https://www.curseforge.com/minecraft/mc-mods/scripta">CurseForge</a> &middot;
+      <a href="../index.html">Team Site</a>
+      <br>Scripta v1.0.0 &middot; MC 1.21.1 &middot; Fabric
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">&#9776;</button>
+      <span class="label">Scripta docs &middot; Sparda</span>
+    </div>
+
+    <div class="content">
+
+      <h1>Files &amp; storage</h1>
+      <p class="lead">
+        Scripta splits its state in two: quest <em>content</em>, which is global and
+        comes from datapacks, and per-world data &mdash; progress, editor changes,
+        theme and uploaded icons.
+      </p>
+
+      <div class="toc">
+        <div class="t">On this page</div>
+        <ol>
+          <li><a href="#big-picture">The big picture</a></li>
+          <li><a href="#content">Quest content (global)</a></li>
+          <li><a href="#store">Editor store</a></li>
+          <li><a href="#progress">Player progress</a></li>
+          <li><a href="#theme">Theme</a></li>
+          <li><a href="#icons">Uploaded icons</a></li>
+          <li><a href="#locations">Quick reference table</a></li>
+        </ol>
+      </div>
+
+      <h2 id="big-picture">The big picture</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Kind of data</th><th>Scope</th><th>Source</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Quests &amp; categories</td>
+              <td>Global &mdash; shared by every world and server the mod runs on</td>
+              <td>Datapack JSON files</td>
+            </tr>
+            <tr>
+              <td>Editor changes, tables, presets</td>
+              <td>Per world</td>
+              <td>The editor store</td>
+            </tr>
+            <tr>
+              <td>Player progress</td>
+              <td>Per world, per player</td>
+              <td>World <code>SavedData</code></td>
+            </tr>
+            <tr>
+              <td>Theme</td>
+              <td>Per world, all players</td>
+              <td>World config JSON</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        <span class="t">Why it matters</span>
+        Because content is global and progress is per world, the same datapack
+        works on a public survival server and a single-player testing world
+        without duplicating files &mdash; and players do not carry their completed
+        quests between worlds.
+      </div>
+
+      <h2 id="content">Quest content (global)</h2>
+
+      <p>
+        Read from any datapack &mdash; your world's <code>datapacks/</code> folder
+        or a mod's own data folder:
+      </p>
+
+      <div class="foot-snip">data/&lt;namespace&gt;/quests/quests/**/*.json     ← quest definitions
+data/&lt;namespace&gt;/quests/categories/**/*.json  ← category definitions</div>
+
+      <p>
+        Content is read on start and on <code>/reload</code>. See
+        <a href="quests.html">Quests &amp; categories</a> for the file format.
+      </p>
+
+      <h2 id="store">Editor store</h2>
+
+      <p>
+        Saves from the web and in-game editors go to a single file per world:
+      </p>
+
+      <div class="foot-snip">&lt;world&gt;/serverconfig/scripta_custom.json</div>
+
+      <p>Its shape is:</p>
+
+      <div class="copy-wrap"><pre><code>{
+  "quests":            { "&lt;quest id&gt;": "&lt;raw quest JSON as a string&gt;" },
+  "categories":        { "&lt;category id&gt;": "&lt;raw category JSON as a string&gt;" },
+  "removedQuests":     [ "&lt;quest id&gt;" ],
+  "removedCategories": [ "&lt;category id&gt;" ],
+  "rewardPresets":     { "&lt;preset name&gt;": "&lt;rewards JSON array as a string&gt;" },
+  "rewardTables":      { "&lt;table id&gt;": "&lt;reward table JSON as a string&gt;" }
+}</code></pre></div>
+
+      <div class="note warn">
+        <span class="t">Documents are stored as strings</span>
+        Quest, category, table and preset bodies are JSON <em>strings</em> inside
+        the store, not nested objects. That is intentional &mdash; it lets
+        unknown future fields and reward types round-trip untouched. Be careful
+        if you hand-edit: the inner values are escaped.
+      </div>
+
+      <h3>The overlay</h3>
+
+      <p>
+        The store is applied as an <strong>overlay</strong> on top of datapack
+        content:
+      </p>
+
+      <ul>
+        <li>A quest saved in an editor wins over a datapack quest with the same id.</li>
+        <li>Ids listed in <code>removedQuests</code> / <code>removedCategories</code> are suppressed &mdash; which is why editor deletions survive <code>/reload</code>.</li>
+        <li>The overlay is re-applied on server start, after every save, and whenever definitions change, so <code>/reload</code> cannot wipe editor work.</li>
+      </ul>
+
+      <div class="note">
+        <span class="t">Reward tables live here</span>
+        Reward tables exist <strong>only</strong> in this store. They are not
+        read from datapack folders, so <code>/reload</code> will not pick up a
+        hand-written table file. Create tables in an editor.
+      </div>
+
+      <h2 id="progress">Player progress</h2>
+
+      <p>
+        Progress is stored in the overworld's <code>SavedData</code>:
+      </p>
+
+      <div class="foot-snip">&lt;world&gt;/data/scripta_progress.dat</div>
+
+      <p>Per player it holds three things:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Field</th><th>Holds</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>completed</code></td><td>Ids of quests the player has finished.</td></tr>
+            <tr><td><code>counters</code></td><td>Objective progress, keyed by objective <em>target</em>.</td></tr>
+            <tr><td><code>claimed</code></td><td>Which reward indexes the player has already claimed, per quest.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note warn">
+        <span class="t">Counters are shared across quests</span>
+        <code>counters</code> is keyed by objective target, not by quest. If two
+        quests both require <code>minecraft:oak_log</code>, they read the same
+        counter &mdash; and deliberately so, since breaking logs satisfies both.
+      </div>
+
+      <p>Progress is sent to a client when they join and whenever it changes.</p>
+
+      <h2 id="theme">Theme</h2>
+
+      <div class="foot-snip">&lt;world&gt;/serverconfig/scripta_theme.json</div>
+
+      <p>
+        Saved from the theme panel or written by hand. See
+        <a href="theming.html">GUI theme</a> for the format.
+      </p>
+
+      <h2 id="icons">Uploaded icons</h2>
+
+      <div class="foot-snip">&lt;world&gt;/serverconfig/scripta_icons/</div>
+
+      <p>
+        PNGs uploaded through the web editor. Each becomes a texture at
+        <code>scripta:web_icons/&lt;name&gt;.png</code> and is pushed to every
+        connected client, so the files only need to exist on the server.
+      </p>
+
+      <h2 id="locations">Quick reference</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Path (relative to the world)</th><th>Contents</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>datapacks/*/data/*/quests/quests/</code></td><td>Hand-authored quest JSON (global).</td></tr>
+            <tr><td><code>datapacks/*/data/*/quests/categories/</code></td><td>Hand-authored category JSON (global).</td></tr>
+            <tr><td><code>serverconfig/scripta_custom.json</code></td><td>Editor store: quests, categories, tables, presets, deletions.</td></tr>
+            <tr><td><code>serverconfig/scripta_theme.json</code></td><td>GUI theme.</td></tr>
+            <tr><td><code>serverconfig/scripta_icons/</code></td><td>Uploaded PNG icons.</td></tr>
+            <tr><td><code>data/scripta_progress.dat</code></td><td>Per-player quest progress.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        <span class="t">Backing up a world</span>
+        Copying the world folder copies everything Scripta owns &mdash; the store,
+        theme, icons and progress all live inside it.
+      </div>
+
+      <div class="pager">
+        <a href="theming.html">&larr; GUI theme</a>
+        <a href="faq.html">FAQ &rarr;</a>
+      </div>
+
+    </div>
+
+    <div class="page-foot">
+      <span>Scripta v1.0.0 &middot; Minecraft 1.21.1 &middot; Fabric</span>
+      <span>Docs for the 1.0 release</span>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

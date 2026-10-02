@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editors — Scripta</title>
+<meta name="description" content="How to use the Scripta web editor and in-game editor: getting the token link, panels, autosave and dirty state, icon upload, live sync and the HTTP API.">
+<link rel="icon" href="../assets/icon.png" type="image/png">
+<link rel="stylesheet" href="../assets/style.css">
+<meta name="theme-color" content="#101014">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Editors — Scripta">
+<meta property="og:description" content="How to use the Scripta web editor and in-game editor: getting the token link, panels, autosave and dirty state, icon upload, live sync and the HTTP API.">
+<noscript><style>@media (max-width: 900px){.sidebar{position:static;transform:none;height:auto;box-shadow:none}.topbar .burger{display:none}}</style></noscript>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="../index.html">
+      <img src="../assets/icon.png" alt="Scripta logo">
+      <span>
+        <span class="name">Scripta</span><br>
+        <span class="ver">v1.0.0</span>
+      </span>
+    </a>
+
+    <div class="nav-group">Team</div>
+    <a class="nav" href="../index.html">Team Home</a>
+    <a class="nav" href="../mods.html">All Mods</a>
+
+    <div class="nav-group">Mod docs</div>
+    <a class="nav" href="index.html">Scripta <span class="nav-badge on">Available</span></a>
+    <a class="nav" href="../florarium/index.html">Florarium <span class="nav-badge">In dev</span></a>
+    <a class="nav" href="../divinity/index.html">Divinity Music <span class="nav-badge">In dev</span></a>
+
+    <div class="nav-group">Getting started</div>
+    <a class="nav" href="index.html">Overview</a>
+    <a class="nav" href="install.html">Installation</a>
+    <a class="nav" href="commands.html">Commands &amp; keybinds</a>
+
+    <div class="nav-group">Authoring</div>
+    <a class="nav" href="quests.html">Quests &amp; categories</a>
+    <a class="nav" href="rewards.html">Rewards &amp; tables</a>
+    <a class="nav" href="editor.html">Editors</a>
+
+    <div class="nav-group">Reference</div>
+    <a class="nav" href="theming.html">GUI theme</a>
+    <a class="nav" href="files.html">Files &amp; storage</a>
+    <a class="nav" href="faq.html">FAQ</a>
+
+    <div class="sidebar-foot">
+      <a href="https://www.curseforge.com/minecraft/mc-mods/scripta">CurseForge</a> &middot;
+      <a href="../index.html">Team Site</a>
+      <br>Scripta v1.0.0 &middot; MC 1.21.1 &middot; Fabric
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">&#9776;</button>
+      <span class="label">Scripta docs &middot; Sparda</span>
+    </div>
+
+    <div class="content">
+
+      <h1>Editors</h1>
+      <p class="lead">
+        Scripta ships two ways to edit content: a browser-based editor served by
+        the running server, and a full editor built into the game. Both write to
+        the same store, and both apply changes to every connected player instantly.
+      </p>
+
+      <div class="toc">
+        <div class="t">On this page</div>
+        <ol>
+          <li><a href="#web-editor">Web editor</a></li>
+          <li><a href="#in-game-editor">In-game editor</a></li>
+          <li><a href="#icons">Icon uploads</a></li>
+          <li><a href="#how-saves-work">How saves work</a></li>
+          <li><a href="#api">HTTP API</a></li>
+        </ol>
+      </div>
+
+      <h2 id="web-editor">Web editor</h2>
+
+      <p>
+        The server hosts a small web server that serves an editor page. Operators
+        get a clickable link in chat.
+      </p>
+
+      <h3>Getting the link</h3>
+
+      <ul>
+        <li><strong>On join</strong> &mdash; operators receive the link automatically when they connect.</li>
+        <li><strong>On demand</strong> &mdash; run <code>/scripta web</code> and click the link in chat.</li>
+      </ul>
+
+      <p>The link looks like this:</p>
+
+      <div class="copy-wrap"><pre><code>http://localhost:25566/?token=&lt;token&gt;</code></pre></div>
+
+      <div class="note danger">
+        <span class="t">The token is a secret</span>
+        <ul>
+          <li>It is regenerated every time the server starts, so old links stop working.</li>
+          <li>It is only ever shown in chat to operator level 2 players &mdash; it is <strong>never</strong> written to the server console or log.</li>
+          <li>Anyone holding the token can edit your quests. Anyone without it gets <code>403 Bad or missing token.</code></li>
+        </ul>
+      </div>
+
+      <h3>Changing the port</h3>
+
+      <p>
+        The editor listens on port <code>25566</code> by default. Override it with
+        a JVM property:
+      </p>
+
+      <div class="copy-wrap"><pre><code>java -Dscripta.webport=8080 -Xmx4G -jar server.jar nogui</code></pre></div>
+
+      <p>
+        If the port cannot be bound, Scripta logs
+        <code>[scripta] Could not start web editor on port &hellip;</code> and
+        <code>/scripta web</code> replies <em>The web editor is not running.</em>
+      </p>
+
+      <h3>Layout</h3>
+
+      <p>The editor has a sidebar of panels and a dirty-state bar:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Panel</th><th>What you do there</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Quests</strong></td><td>Create and edit quests: id, category, title, description, icon, objectives, rewards, prerequisites, auto-claim.</td></tr>
+            <tr><td><strong>Categories</strong></td><td>Create and edit categories: id, display name, icon, sort order, number.</td></tr>
+            <tr><td><strong>Reward tables</strong></td><td>Weighted pools, entry weights, and the loot-crate toggle.</td></tr>
+            <tr><td><strong>Presets</strong></td><td>Manage reusable reward bundles; insert one into any quest with a click.</td></tr>
+            <tr><td><strong>Icons</strong></td><td>Upload and manage PNG icons (the only web-only feature).</td></tr>
+            <tr><td><strong>GUI theme</strong></td><td>Colours, surfaces, sizes and widget styles. See <a href="theming.html">GUI theme</a>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Helpful details:</p>
+
+      <ul>
+        <li>Unsaved edits keep a <strong>Save / Discard</strong> bar visible at the top, so you cannot lose work by switching panels.</li>
+        <li>Objective <em>target</em> fields autocomplete from the live item, block, entity and advancement registries of your server &mdash; including modded content.</li>
+        <li>Reward types come from the server's reward registry, so the dropdown always matches what the server understands.</li>
+        <li>Prerequisites are edited as chips rather than a comma-separated string.</li>
+        <li>A quest's category is a dropdown &mdash; pick one, do not type an id.</li>
+        <li>Unknown or inline reward JSON stays editable as raw text, so future content is never locked out.</li>
+      </ul>
+
+      <h2 id="in-game-editor">In-game editor</h2>
+
+      <p>
+        Run <code>/questedit</code> to open the same editor inside Minecraft. It
+        covers quests, categories, reward tables, presets and theme controls, with
+        the same save/cancel flow as the web editor.
+      </p>
+
+      <div class="note warn">
+        <span class="t">Icon upload is web-only</span>
+        The in-game editor uses block/item icons and texture paths from a resource
+        pack. Uploading PNG files is only available in the web editor.
+      </div>
+
+      <p>
+        The command opens for any player, but the server re-checks
+        <strong>operator level 2</strong> on every edit and rejects the rest with
+        <code>You need operator level 2 to edit quests.</code>
+      </p>
+
+      <h2 id="icons">Icon uploads</h2>
+
+      <p>
+        The web editor's <strong>Icons</strong> panel uploads PNGs. Constraints are
+        enforced server-side:
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Constraint</th><th>Limit</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Format</td><td>Real PNG files only (signature is verified)</td></tr>
+            <tr><td>File size</td><td>8 bytes &ndash; 256 KB</td></tr>
+            <tr><td>Dimensions</td><td>1&times;1 &ndash; 256&times;256</td></tr>
+            <tr><td>Stored as</td><td><code>scripta:web_icons/&lt;sanitised-name&gt;.png</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Uploaded icons are pushed to every connected client automatically, so you
+        can reference them straight away:
+      </p>
+
+      <div class="copy-wrap"><pre><code>"icon": "scripta:web_icons/dragon.png"</code></pre></div>
+
+      <p>
+        File names are lower-cased and stripped of anything outside
+        <code>a-z 0-9 . _ -</code>, so two uploads differing only in case collapse
+        to the same name.
+      </p>
+
+      <h2 id="how-saves-work">How saves work</h2>
+
+      <p>
+        Editor changes are <strong>not</strong> written into your datapack
+        folders. They are stored separately in the world (see
+        <a href="files.html#store">Files &amp; storage</a>) and overlaid on top of
+        whatever the datapacks define. This is why:
+      </p>
+
+      <ul>
+        <li>Saving applies immediately &mdash; no <code>/reload</code> needed.</li>
+        <li>Every connected player sees the change within about a second.</li>
+        <li>Quests you delete in an editor stay deleted, even after <code>/reload</code> &mdash; the deletions are remembered.</li>
+        <li>Edits are per-world, so a single-player world and a survival server can hold different quest content.</li>
+      </ul>
+
+      <div class="note">
+        <span class="t">Hand-edited files still work</span>
+        If you prefer plain files, write quests and categories into a datapack
+        and use <code>/reload</code>. The two approaches coexist; the editor store
+        simply wins where the two overlap.
+      </div>
+
+      <h2 id="api">HTTP API</h2>
+
+      <p>
+        The editor is a small JSON API. Every request requires the
+        <code>?token=</code> query parameter &mdash; without it you get
+        <code>403</code>.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Endpoint</th><th>Method</th><th>Purpose</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>/</code></td><td>GET</td><td>The editor page itself.</td></tr>
+            <tr><td><code>/api/state</code></td><td>GET</td><td>All quests, categories, tables, reward types and objective types.</td></tr>
+            <tr><td><code>/api/items</code></td><td>GET</td><td>Item registry ids.</td></tr>
+            <tr><td><code>/api/blocks</code></td><td>GET</td><td>Block registry ids.</td></tr>
+            <tr><td><code>/api/entities</code></td><td>GET</td><td>Entity type ids.</td></tr>
+            <tr><td><code>/api/advancements</code></td><td>GET</td><td>Loaded advancement ids.</td></tr>
+            <tr><td><code>/api/theme</code></td><td>GET / POST</td><td>Read or write the GUI theme.</td></tr>
+            <tr><td><code>/api/presets</code></td><td>GET</td><td>All presets plus the built-in names.</td></tr>
+            <tr><td><code>/api/preset</code></td><td>POST</td><td>Create or update a preset.</td></tr>
+            <tr><td><code>/api/preset/delete</code></td><td>&mdash;</td><td>Delete a preset (<code>?name=</code>).</td></tr>
+            <tr><td><code>/api/quest</code></td><td>POST</td><td>Create or update a quest.</td></tr>
+            <tr><td><code>/api/quest/delete</code></td><td>&mdash;</td><td>Delete a quest (<code>?id=</code>).</td></tr>
+            <tr><td><code>/api/category</code></td><td>POST</td><td>Create or update a category.</td></tr>
+            <tr><td><code>/api/category/delete</code></td><td>&mdash;</td><td>Delete a category (<code>?id=</code>).</td></tr>
+            <tr><td><code>/api/table</code></td><td>POST</td><td>Create or update a reward table.</td></tr>
+            <tr><td><code>/api/table/delete</code></td><td>&mdash;</td><td>Delete a table (<code>?id=</code>).</td></tr>
+            <tr><td><code>/api/icons</code></td><td>GET</td><td>List uploaded icons.</td></tr>
+            <tr><td><code>/api/icon</code></td><td>GET / POST</td><td>Read or upload a PNG (<code>?name=</code>).</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Mutating requests are executed on the server thread with a 30 second
+        timeout, so an edit cannot block the game indefinitely.
+      </p>
+
+      <div class="note warn">
+        <span class="t">Still operator-gated</span>
+        The API requires the token, and the token is only ever issued to operator
+        level 2 players. Anyone with a link can edit quests.
+      </div>
+
+      <div class="pager">
+        <a href="rewards.html">&larr; Rewards &amp; tables</a>
+        <a href="theming.html">GUI theme &rarr;</a>
+      </div>
+
+    </div>
+
+    <div class="page-foot">
+      <span>Scripta v1.0.0 &middot; Minecraft 1.21.1 &middot; Fabric</span>
+      <span>Docs for the 1.0 release</span>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

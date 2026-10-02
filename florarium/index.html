@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Florarium — Overview · Sparda</title>
+<meta name="description" content="Florarium overview: an in-development magic-tech mod for Fabric 1.21.1 built around a mana economy and a 28-bloom flower progression chain.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2312261a'/%3E%3Ctext x='32' y='44' font-family='sans-serif' font-size='36' font-weight='bold' text-anchor='middle' fill='%237dd87d'%3EF%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<meta name="theme-color" content="#101014">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Florarium — Overview · Sparda">
+<meta property="og:description" content="Florarium overview: an in-development magic-tech mod for Fabric 1.21.1 built around a mana economy and a 28-bloom flower progression chain.">
+<noscript><style>@media (max-width: 900px){.sidebar{position:static;transform:none;height:auto;box-shadow:none}.topbar .burger{display:none}}</style></noscript>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark" aria-hidden="true">F</span>
+      <span>
+        <span class="name">Florarium</span><br>
+        <span class="ver">In development</span>
+      </span>
+    </a>
+
+    <div class="nav-group">Team</div>
+    <a class="nav" href="../index.html">Team Home</a>
+    <a class="nav" href="../mods.html">All Mods</a>
+
+    <div class="nav-group">Mod docs</div>
+    <a class="nav" href="../docs/index.html">Scripta <span class="nav-badge on">Available</span></a>
+    <a class="nav" href="index.html">Florarium <span class="nav-badge">In dev</span></a>
+    <a class="nav" href="../divinity/index.html">Divinity Music <span class="nav-badge">In dev</span></a>
+
+    <div class="nav-group">Florarium guide</div>
+    <a class="nav" href="index.html">Overview</a>
+    <a class="nav" href="mana.html">Mana economy</a>
+    <a class="nav" href="blooms.html">Bloom chain</a>
+    <a class="nav" href="stations.html">Stations &amp; miners</a>
+    <a class="nav" href="magic.html">Bloom Magic &amp; FX</a>
+
+    <div class="sidebar-foot">
+      <a href="../index.html">Team Site</a>
+      <br>Florarium &middot; in development &middot; MC 1.21.1
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">&#9776;</button>
+      <span class="label">Florarium docs &middot; Sparda</span>
+    </div>
+
+    <div class="content">
+
+      <div class="hero hero--flora">
+        <h1>Florarium</h1>
+        <p class="lead">
+          A magic-tech mod built around a <strong>mana economy</strong> and a
+          <strong>flower-based progression chain</strong>. The core loop: generate
+          mana with flowers &rarr; spend it at crafting stations &rarr; craft the
+          next flower in the chain &rarr; unlock deeper tiers. It also includes
+          tiered ore-generating machines (Bonsai Miners), a custom particle FX
+          system, and a spell-casting bridge to the Spell Engine mod.
+        </p>
+
+        <div class="badges">
+          <span class="badge dev">In development</span>
+          <span class="badge">Minecraft 1.21.1</span>
+          <span class="badge">Fabric</span>
+          <span class="badge">Mojang mappings</span>
+        </div>
+      </div>
+
+      <div class="note warn">
+        <span class="t">Not yet released</span>
+        Florarium is in active development and has no download yet. These pages
+        document the design as it stands in the source docs, so you can follow
+        along while it is being built.
+      </div>
+
+      <div class="version-strip">
+        <div>Status <b>In development</b></div>
+        <div>Mod id <b>divinity_additions</b></div>
+        <div>Platform <b>Fabric 1.21.1 &middot; Java 21</b></div>
+        <div>Requires <b>Fabric API, Spell Engine, Spell Power, Tiny Config</b></div>
+      </div>
+
+      <h2>How it plays</h2>
+
+      <p>
+        The flower chain <em>is</em> the tech tree: each flower crafts the next
+        via the Bloom Apothecary. If you are ever lost, the in-game
+        <strong>Divinity Guide</strong> book lists station recipes and builds.
+      </p>
+
+      <ol>
+        <li><strong>Stage 0 — First pool and first spark:</strong> craft a Mana Pool, plant an Ember Wick, Apothecary-craft a Petal Rain.</li>
+        <li><strong>Stage 1 — Apothecary chain:</strong> work through Kindle Bloom and Harvest Bloom, then craft the Wand of Binding and the Architect Wand.</li>
+        <li><strong>Stage 2 — Ring rites:</strong> raise the Apothecary ring (an Apothecary plus 4 Bloom Pedestals) and craft Frostbloom through Rune Bloom.</li>
+        <li><strong>Stage 3 — Forge tier:</strong> craft Cinder Bloom through Bloomheart Core, ending at Genesis Bloom and the Prism Bloom capstone.</li>
+        <li><strong>Stage 4 — Awakened blooms:</strong> use the late flowers' abilities — village reveal, cloning, mass crop growth, and more.</li>
+      </ol>
+
+      <p>
+        Alongside the chain run the side systems: utility flowers, condensed
+        2.5&times; variants, automation via hoppers and Mana Relays, and Prism Ore
+        mining deep underground. See the <a href="blooms.html">bloom chain</a>
+        page for the full walkthrough.
+      </p>
+
+      <h2>Systems</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3 class="card-title">Mana economy</h3>
+          <p>One unlimited Mana Pool, daylight trickle, fuel and XP conversion, relays, and garden layout rules.</p>
+          <a href="mana.html">Mana economy &rarr;</a>
+        </div>
+        <div class="card">
+          <h3 class="card-title">28-bloom chain</h3>
+          <p>Every bloom in completion order, what it costs, and what it does — from Ember Wick to Prism Bloom.</p>
+          <a href="blooms.html">Bloom chain &rarr;</a>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Stations &amp; miners</h3>
+          <p>The Bloom Apothecary, its ring, side stations, automation, and tiered Bonsai Miners.</p>
+          <a href="stations.html">Stations &amp; miners &rarr;</a>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Bloom Magic &amp; FX</h3>
+          <p>The in-progress Bloom Magic 2.0 engine, the spell mana bridge, and the custom particle framework.</p>
+          <a href="magic.html">Bloom Magic &amp; FX &rarr;</a>
+        </div>
+      </div>
+
+      <h2>Still being built</h2>
+
+      <p>The following are known work-in-progress areas, not finished features:</p>
+      <ul>
+        <li><strong>Bloom Magic 2.0 engine</strong> — API interfaces, wand management, and the legacy mana bridge exist; spell catalog loading, wand UI, and full runtime integration are ongoing.</li>
+        <li><strong>Bonsai Farmer</strong> — stub block only.</li>
+        <li><strong>Glowing Ore</strong> — stub block only.</li>
+        <li><strong>GeckoLib</strong> — dependency disabled; wand and projectile animations are not yet wired.</li>
+        <li><strong>JEI</strong> — compile-only API for now; full recipe integration is pending.</li>
+      </ul>
+
+      <div class="pager">
+        <a href="../mods.html">&larr; All Mods</a>
+        <a href="mana.html">Mana economy &rarr;</a>
+      </div>
+
+    </div>
+
+    <div class="page-foot">
+      <span>Florarium &middot; in development &middot; Sparda team site</span>
+      <span>2026</span>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

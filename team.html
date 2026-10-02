@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Team — Sparda</title>
+<meta name="description" content="The people behind Sparda: verified credits for Scripta, Florarium, and Divinity Music, plus the libraries our mods are built on.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314141a'/%3E%3Ctext x='32' y='44' font-family='sans-serif' font-size='36' font-weight='bold' text-anchor='middle' fill='%2355ffff'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+<meta name="theme-color" content="#101014">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Team — Sparda">
+<meta property="og:description" content="The people behind Sparda: verified credits for Scripta, Florarium, and Divinity Music, plus the libraries our mods are built on.">
+<noscript><style>@media (max-width: 900px){.sidebar{position:static;transform:none;height:auto;box-shadow:none}.topbar .burger{display:none}}</style></noscript>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">S</span>
+      <span>
+        <span class="name">Sparda</span><br>
+        <span class="ver">Team Site</span>
+      </span>
+    </a>
+
+    <div class="nav-group">Team</div>
+    <a class="nav" href="index.html">Home</a>
+    <a class="nav" href="mods.html">Our Mods</a>
+    <a class="nav" href="team.html">The Team</a>
+
+    <div class="nav-group">Mod docs</div>
+    <a class="nav" href="docs/index.html">Scripta <span class="nav-badge on">Available</span></a>
+    <a class="nav" href="florarium/index.html">Florarium <span class="nav-badge">In dev</span></a>
+    <a class="nav" href="divinity/index.html">Divinity Music <span class="nav-badge">In dev</span></a>
+
+    <div class="nav-group">Community</div>
+    <a class="nav" href="support.html">Support &amp; FAQ</a>
+
+    <div class="sidebar-foot">
+      <a href="https://github.com/spardamc">GitHub</a> &middot;
+      <a href="https://www.curseforge.com/members/pqlle/projects">CurseForge</a>
+      <br>&copy; 2026 Sparda Team
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">&#9776;</button>
+      <span class="label">The Team</span>
+    </div>
+
+    <div class="content">
+
+      <h1>The Team</h1>
+      <p class="lead">Two verified contributors — everyone below is credited in the mods' own source docs, and nobody is listed who is not.</p>
+
+      <div class="grid team-grid">
+        <div class="card">
+          <h2 class="card-title">@pqlle</h2>
+          <p><strong>Development</strong></p>
+          <p>Credited as the developer of <a href="docs/index.html">Scripta</a> in its own description. Systems work: data-driven quest registries, per-player progress, networking, and the Architectury + OwoLib stack the mod ships on.</p>
+        </div>
+        <div class="card">
+          <h2 class="card-title">@Doggegn</h2>
+          <p><strong>Art &amp; design</strong></p>
+          <p>Credited for <a href="docs/index.html">Scripta</a>'s GUI design and logo in its own description. Visual identity lead across the team's projects.</p>
+        </div>
+      </div>
+
+      <h2>Who works on what</h2>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Project</th><th>Credits stated in source docs</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><a href="docs/index.html">Scripta</a></td><td>Developed by @pqlle; GUI design + logo by @Doggegn</td></tr>
+          <tr><td><a href="florarium/index.html">Florarium</a></td><td>No authorship stated in the source docs</td></tr>
+          <tr><td><a href="divinity/index.html">Divinity Music</a></td><td>Mod metadata lists authors as &ldquo;Divina Commedia Team&rdquo;</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="note">
+        <span class="t">Only verified credits</span>
+        Team membership beyond the credits above is unknown. If you contributed and are missing here, open an issue and we will fix it.
+      </div>
+
+      <h2>Credits &amp; Attributions</h2>
+      <p>Our work is built on the shoulders of giants in the Minecraft modding community:</p>
+      <ul>
+        <li><strong>Fabric API</strong> — the foundation of everything we do; required by all three projects.</li>
+        <li><strong>Architectury API</strong> — the multi-loader framework behind Scripta's shared common module.</li>
+        <li><strong>OwoLib</strong> — the UI framework driving Scripta's quest book and editors; bundled inside the Scripta jar.</li>
+        <li><strong>Spell Engine + Spell Power</strong> — the spell framework Florarium's mana bridge hooks into.</li>
+        <li><strong>Tiny Config</strong> — backs Florarium's JSON configuration with hot-reload support.</li>
+        <li><strong>JEI and GeckoLib</strong> — Florarium integrates against them (JEI compile-only for now; GeckoLib currently disabled pending animation wiring).</li>
+      </ul>
+
+      <p>All current projects target <strong>Minecraft 1.21.1 on Fabric with Java 21</strong>; Florarium is written against Mojang mappings.</p>
+
+      <div class="note">
+        <span class="t">Want to contribute?</span>
+        We are always open to feedback and bug reports. Check our GitHub repositories to see how you can help.
+      </div>
+
+    </div>
+
+    <div class="page-foot">
+      <span>Sparda &middot; Fabric Modding Team</span>
+      <span>2026</span>
+    </div>
+  </div>
+</div>
+
+<script src="assets/script.js"></script>
+</body>
+</html>

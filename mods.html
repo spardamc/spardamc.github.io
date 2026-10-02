@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mods — Sparda</title>
+<meta name="description" content="The Sparda mod catalogue: Scripta (released questing mod for Fabric 1.21.1), Florarium (in-development mana magic-tech), Divinity Music (in-development custom discs).">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314141a'/%3E%3Ctext x='32' y='44' font-family='sans-serif' font-size='36' font-weight='bold' text-anchor='middle' fill='%2355ffff'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+<meta name="theme-color" content="#101014">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mods — Sparda">
+<meta property="og:description" content="The Sparda mod catalogue: Scripta (released questing mod for Fabric 1.21.1), Florarium (in-development mana magic-tech), Divinity Music (in-development custom discs).">
+<noscript><style>@media (max-width: 900px){.sidebar{position:static;transform:none;height:auto;box-shadow:none}.topbar .burger{display:none}}</style></noscript>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">S</span>
+      <span>
+        <span class="name">Sparda</span><br>
+        <span class="ver">Team Site</span>
+      </span>
+    </a>
+
+    <div class="nav-group">Team</div>
+    <a class="nav" href="index.html">Home</a>
+    <a class="nav" href="mods.html">Our Mods</a>
+    <a class="nav" href="team.html">The Team</a>
+
+    <div class="nav-group">Mod docs</div>
+    <a class="nav" href="docs/index.html">Scripta <span class="nav-badge on">Available</span></a>
+    <a class="nav" href="florarium/index.html">Florarium <span class="nav-badge">In dev</span></a>
+    <a class="nav" href="divinity/index.html">Divinity Music <span class="nav-badge">In dev</span></a>
+
+    <div class="nav-group">Community</div>
+    <a class="nav" href="support.html">Support &amp; FAQ</a>
+
+    <div class="sidebar-foot">
+      <a href="https://github.com/spardamc">GitHub</a> &middot;
+      <a href="https://www.curseforge.com/members/pqlle/projects">CurseForge</a>
+      <br>&copy; 2026 Sparda Team
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">&#9776;</button>
+      <span class="label">Our Mods</span>
+    </div>
+
+    <div class="content">
+
+      <h1>Mod Catalogue</h1>
+      <p class="lead">One shipped release, two projects on the workbench — each documented at its real stage.</p>
+
+      <hr>
+
+      <!-- Scripta -->
+      <div class="hero mod-entry">
+        <div class="split-row">
+          <div>
+            <h2 class="mod-title lg">Scripta</h2>
+            <div class="badges badge-row">
+              <span class="badge on">Available now</span>
+              <span class="badge">v1.0.0</span>
+              <span class="badge">Fabric 1.21.1</span>
+            </div>
+          </div>
+          <a class="btn primary" href="https://www.curseforge.com/minecraft/mc-mods/scripta">Download on CurseForge</a>
+        </div>
+        <p>A data-driven <strong>global questing mod</strong> for Minecraft 1.21.1, currently shipping on Fabric. Quests are authored once as JSON data, loaded like advancements, and identical across every world and server — players only carry progress state.</p>
+        <ul>
+          <li><strong>Five objective types</strong> — break blocks, kill entities, collect items, reach custom stats, grant advancements — each with its own required count.</li>
+          <li><strong>Eleven reward types</strong> — items, XP, XP levels, commands, advancements, toasts, weighted tables, loot crates, and interactive player choices.</li>
+          <li><strong>Weighted reward tables</strong> — roll one prize, grant them all, or hand over a physical loot crate the player opens themselves.</li>
+          <li><strong>Two editors</strong> — a browser-based web editor with a tokenised operator link, plus a full in-game editor behind operator level 2.</li>
+          <li><strong>Per-player progress</strong> — completion, objective counters, and claimed rewards persist per player in world <code>SavedData</code> and sync on join.</li>
+          <li><strong>Themeable quest book</strong> — per-pane surfaces, colours, sizes, and widget styles, including custom background textures.</li>
+        </ul>
+        <p>Requires Minecraft 1.21.1, Fabric Loader 0.16.9+, Fabric API, and Architectury API. OwoLib ships inside the Scripta jar — do not install it separately.</p>
+        <div class="btn-row">
+          <a class="btn" href="docs/index.html">Documentation</a>
+          <a class="btn" href="docs/install.html">Installation</a>
+        </div>
+      </div>
+
+      <!-- Florarium -->
+      <div class="card roomy mod-entry">
+        <h2 class="mod-title md">Florarium</h2>
+        <div class="badges badge-row">
+          <span class="badge dev">In development</span>
+          <span class="badge">Fabric 1.21.1</span>
+        </div>
+        <p>A magic-tech mod built around a <strong>mana economy</strong> and a <strong>28-bloom flower progression chain</strong>. One unlimited Mana Pool anchors everything: daylight, fuels, XP, and flower generators feed it, while crafting stations and spell casts drain it. The flower chain <em>is</em> the tech tree — each bloom crafts the next via the Bloom Apothecary, from Ember Wick through ring rites and the forge tier to the Prism Bloom capstone (2000 mana/s with a Luck aura).</p>
+        <p>Around the chain: six crafting and utility stations with hopper automation, tiered <strong>Bonsai Miners</strong> (T1–T4 ore generation with GUI, auto-smelt, and network routing), garden layout rules that punish monoculture, Prism Ore mining deep underground (y &minus;48 to &minus;8), and a custom particle FX framework. The <strong>Bloom Magic 2.0</strong> spell engine — API interfaces, wand management, and a legacy mana bridge that drains pool mana per spell tier — is still being built, as are the Bonsai Farmer and Glowing Ore blocks.</p>
+        <div class="btn-row">
+          <a class="btn" href="florarium/index.html">Florarium docs</a>
+          <a class="btn" href="florarium/blooms.html">The bloom chain</a>
+        </div>
+        <div class="note">
+          <span class="t">Coming soon — no download yet</span>
+          Florarium is in active development and is not publicly released. There is no download button because there is nothing to download yet.
+        </div>
+      </div>
+
+      <!-- Divinity Music -->
+      <div class="card roomy mod-entry">
+        <h2 class="mod-title md">Divinity Music</h2>
+        <div class="badges badge-row">
+          <span class="badge dev">In development</span>
+          <span class="badge">Fabric 1.21.1</span>
+        </div>
+        <p>A focused expansion for Minecraft's audio experience. <strong>Seven custom music discs</strong> — White Ferrari (4:09), Death Metal (4:22), Coffee Bean (3:29), One More (1:39), Woods (4:46), &#40658;&#12356;&#涙; (5:07), Majula (3:19) — each a Rare single-stack jukebox-playable item with a streamed <code>.ogg</code> track, its own jukebox song and comparator output, a shapeless crafting recipe, English and Italian localisations, and per-track subtitles. A dedicated Divinity creative tab holds them all, and a persistent <strong>Now Playing HUD</strong> shows the current track with a progress bar while it plays through a vanilla jukebox.</p>
+        <p>Next on the roadmap: <strong>divine artifacts</strong> with active or passive behaviours (an amulet is named among them), plus recipe and acquisition tuning, client tooltips and particles, and Sodium/Iris compatibility verification. Names like Violastro and Black Vinyl exist in assets but are not working items yet.</p>
+        <div class="btn-row">
+          <a class="btn" href="divinity/index.html">Divinity docs</a>
+          <a class="btn" href="divinity/discs.html">Discs &amp; tracks</a>
+        </div>
+        <div class="note">
+          <span class="t">Coming soon — no download yet</span>
+          Divinity Music is in development and is not publicly released. There is no download button because there is nothing to download yet.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="page-foot">
+      <span>Sparda &middot; Fabric Modding Team</span>
+      <span>2026</span>
+    </div>
+  </div>
+</div>
+
+<script src="assets/script.js"></script>
+</body>
+</html>

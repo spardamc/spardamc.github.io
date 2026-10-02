@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quests &amp; categories — Scripta</title>
+<meta name="description" content="Scripta quest and category JSON reference: file locations, every field, the five objective types, icons, prerequisites, auto_claim and reload behaviour.">
+<link rel="icon" href="../assets/icon.png" type="image/png">
+<link rel="stylesheet" href="../assets/style.css">
+<meta name="theme-color" content="#101014">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Quests &amp; categories — Scripta">
+<meta property="og:description" content="Scripta quest and category JSON reference: file locations, every field, the five objective types, icons, prerequisites, auto_claim and reload behaviour.">
+<noscript><style>@media (max-width: 900px){.sidebar{position:static;transform:none;height:auto;box-shadow:none}.topbar .burger{display:none}}</style></noscript>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="../index.html">
+      <img src="../assets/icon.png" alt="Scripta logo">
+      <span>
+        <span class="name">Scripta</span><br>
+        <span class="ver">v1.0.0</span>
+      </span>
+    </a>
+
+    <div class="nav-group">Team</div>
+    <a class="nav" href="../index.html">Team Home</a>
+    <a class="nav" href="../mods.html">All Mods</a>
+
+    <div class="nav-group">Mod docs</div>
+    <a class="nav" href="index.html">Scripta <span class="nav-badge on">Available</span></a>
+    <a class="nav" href="../florarium/index.html">Florarium <span class="nav-badge">In dev</span></a>
+    <a class="nav" href="../divinity/index.html">Divinity Music <span class="nav-badge">In dev</span></a>
+
+    <div class="nav-group">Getting started</div>
+    <a class="nav" href="index.html">Overview</a>
+    <a class="nav" href="install.html">Installation</a>
+    <a class="nav" href="commands.html">Commands &amp; keybinds</a>
+
+    <div class="nav-group">Authoring</div>
+    <a class="nav" href="quests.html">Quests &amp; categories</a>
+    <a class="nav" href="rewards.html">Rewards &amp; tables</a>
+    <a class="nav" href="editor.html">Editors</a>
+
+    <div class="nav-group">Reference</div>
+    <a class="nav" href="theming.html">GUI theme</a>
+    <a class="nav" href="files.html">Files &amp; storage</a>
+    <a class="nav" href="faq.html">FAQ</a>
+
+    <div class="sidebar-foot">
+      <a href="https://www.curseforge.com/minecraft/mc-mods/scripta">CurseForge</a> &middot;
+      <a href="../index.html">Team Site</a>
+      <br>Scripta v1.0.0 &middot; MC 1.21.1 &middot; Fabric
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">&#9776;</button>
+      <span class="label">Scripta docs &middot; Sparda</span>
+    </div>
+
+    <div class="content">
+
+      <h1>Quests &amp; categories</h1>
+      <p class="lead">
+        Quests are plain JSON in your datapack. This page documents every field
+        Scripta 1.0.0 reads, the five objective types, and how ids and files
+        relate to each other.
+      </p>
+
+      <div class="toc">
+        <div class="t">On this page</div>
+        <ol>
+          <li><a href="#where">Where files live</a></li>
+          <li><a href="#ids">Ids and file names</a></li>
+          <li><a href="#categories">Category fields</a></li>
+          <li><a href="#quests">Quest fields</a></li>
+          <li><a href="#objectives">Objective types</a></li>
+          <li><a href="#icons">Icons</a></li>
+          <li><a href="#prerequisites">Prerequisites</a></li>
+          <li><a href="#autoclaim">auto_claim</a></li>
+          <li><a href="#numbering">Numbered categories</a></li>
+          <li><a href="#reload">Reloading &amp; syncing</a></li>
+        </ol>
+      </div>
+
+      <h2 id="where">Where files live</h2>
+
+      <p>
+        Scripta scans two folders inside any datapack &mdash; yours
+        (<code>data/&lt;namespace&gt;/</code>) or a mod's. Both searches are
+        recursive and only pick up <code>.json</code> files.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Content</th><th>Path</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Quests</td>
+              <td><code>data/&lt;namespace&gt;/quests/quests/**/*.json</code></td>
+            </tr>
+            <tr>
+              <td>Categories</td>
+              <td><code>data/&lt;namespace&gt;/quests/categories/**/*.json</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        A typical world-side datapack for Scripta looks like this:
+      </p>
+
+      <div class="foot-snip">world/
+└─ datapacks/
+   └─ my_quests/
+      ├─ pack.mcmeta
+      └─ data/
+         └─ mypack/
+            └─ quests/
+               ├─ categories/
+               │  ├─ getting_started.json
+               │  └─ combat.json
+               └─ quests/
+                  ├─ chop_oak.json
+                  └─ slay_zombie.json</div>
+
+      <div class="note">
+        <span class="t">Namespace is yours to choose</span>
+        The folder under <code>data/</code> is any namespace you like &mdash;
+        <code>mypack</code>, <code>server</code>, whatever. Scripta does not
+        require <code>scripta</code> as the namespace.
+      </div>
+
+      <h2 id="ids">Ids and file names</h2>
+
+      <p>
+        The <code>id</code> <em>inside</em> the JSON wins. The file name is
+        irrelevant to identity, so you can reorganise freely:
+      </p>
+
+      <ul>
+        <li>Renaming a file does <strong>not</strong> change a quest's id.</li>
+        <li>Two files declaring the same id &mdash; the last one loaded wins.</li>
+        <li>Ids must be in <code>namespace:path</code> form.</li>
+      </ul>
+
+      <div class="note warn">
+        <span class="t">Prerequisites and rewards reference ids, not paths</span>
+        If you reference <code>myquests:chop_oak</code> from a prerequisite list,
+        that id must match the quest's <code>id</code> field exactly.
+      </div>
+
+      <h2 id="categories">Category fields</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Field</th><th>Type</th><th>Required</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>id</code></td>
+              <td>string</td>
+              <td>Yes</td>
+              <td>Unique category id, e.g. <code>mypack:getting_started</code>.</td>
+            </tr>
+            <tr>
+              <td><code>display_name</code></td>
+              <td>string</td>
+              <td>Yes</td>
+              <td>Shown as the category tab label.</td>
+            </tr>
+            <tr>
+              <td><code>icon</code></td>
+              <td>icon</td>
+              <td>Yes</td>
+              <td>Item/block or texture. See <a href="#icons">Icons</a>.</td>
+            </tr>
+            <tr>
+              <td><code>sort_order</code></td>
+              <td>int</td>
+              <td>No</td>
+              <td>Default <code>0</code>. Lower sorts first.</td>
+            </tr>
+            <tr>
+              <td><code>number</code></td>
+              <td>int</td>
+              <td>No</td>
+              <td>Default <code>0</code> (unnumbered). Drives the <code>1.1</code> id scheme.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="copy-wrap"><pre><code>{
+  "id": "mypack:getting_started",
+  "display_name": "Getting Started",
+  "icon": {
+    "id": "minecraft:crafting_table",
+    "count": 1
+  },
+  "sort_order": 0
+}</code></pre></div>
+
+      <h2 id="quests">Quest fields</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Field</th><th>Type</th><th>Required</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>id</code></td>
+              <td>string</td>
+              <td>Yes</td>
+              <td>Unique quest id.</td>
+            </tr>
+            <tr>
+              <td><code>category</code></td>
+              <td>string</td>
+              <td>Yes</td>
+              <td>Id of the category this quest belongs to.</td>
+            </tr>
+            <tr>
+              <td><code>title</code></td>
+              <td>string</td>
+              <td>Yes</td>
+              <td>Shown in the quest list and detail header.</td>
+            </tr>
+            <tr>
+              <td><code>description</code></td>
+              <td>string</td>
+              <td>Yes</td>
+              <td>May be <code>""</code> if you have nothing to say.</td>
+            </tr>
+            <tr>
+              <td><code>icon</code></td>
+              <td>icon</td>
+              <td>Yes</td>
+              <td>See <a href="#icons">Icons</a>.</td>
+            </tr>
+            <tr>
+              <td><code>objectives</code></td>
+              <td>array</td>
+              <td>Yes</td>
+              <td>May be <code>[]</code>. All objectives must be met to complete.</td>
+            </tr>
+            <tr>
+              <td><code>rewards</code></td>
+              <td>array</td>
+              <td>No</td>
+              <td>Default <code>[]</code>. See <a href="rewards.html">Rewards</a>.</td>
+            </tr>
+            <tr>
+              <td><code>auto_claim</code></td>
+              <td>bool</td>
+              <td>No</td>
+              <td>Default <code>true</code>. See <a href="#autoclaim">auto_claim</a>.</td>
+            </tr>
+            <tr>
+              <td><code>prerequisites</code></td>
+              <td>array</td>
+              <td>No</td>
+              <td>Default <code>[]</code>. Quest ids that must be completed first.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Complete example</h3>
+
+      <div class="copy-wrap"><pre><code>{
+  "id": "mypack:getting_started/chop_oak",
+  "category": "mypack:getting_started",
+  "title": "Chop Some Oak",
+  "description": "Break 10 oak logs.",
+  "icon": { "id": "minecraft:oak_log", "count": 1 },
+  "objectives": [
+    { "type": "break_block", "target": "minecraft:oak_log", "required_count": 10 }
+  ],
+  "rewards": [
+    { "type": "item", "item": "minecraft:bread", "amount": 5 },
+    { "type": "xp", "amount": 25 }
+  ],
+  "auto_claim": true,
+  "prerequisites": []
+}</code></pre></div>
+
+      <h3>With an interactive choice</h3>
+
+      <div class="copy-wrap"><pre><code>{
+  "id": "mypack:getting_started/choose_your_boon",
+  "category": "mypack:getting_started",
+  "title": "Choose Your Boon",
+  "description": "Pick one reward.",
+  "icon": { "id": "minecraft:enchanted_book", "count": 1 },
+  "objectives": [
+    { "type": "collect_item", "target": "minecraft:oak_log", "required_count": 5 }
+  ],
+  "rewards": [
+    { "type": "xp", "amount": 10 },
+    {
+      "type": "choice",
+      "count": 1,
+      "options": [
+        { "type": "item", "item": "minecraft:golden_apple", "amount": 1 },
+        { "type": "item", "item": "minecraft:diamond", "amount": 2 }
+      ]
+    }
+  ],
+  "auto_claim": true
+}</code></pre></div>
+
+      <h2 id="objectives">Objective types</h2>
+
+      <p>
+        Each objective is <code>{ "type", "target", "required_count" }</code> &mdash;
+        all three fields are required. <code>target</code> means different things
+        per type, so the table below matters.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Type</th><th><code>target</code> is&hellip;</th><th>How it counts</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>break_block</code></td>
+              <td>a block id, e.g. <code>minecraft:oak_log</code></td>
+              <td>Event-driven. Increments when you break a matching block.</td>
+            </tr>
+            <tr>
+              <td><code>kill_entity</code></td>
+              <td>an entity type, e.g. <code>minecraft:zombie</code></td>
+              <td>Event-driven. Increments when you kill a matching mob.</td>
+            </tr>
+            <tr>
+              <td><code>collect_item</code></td>
+              <td>an item id, e.g. <code>minecraft:diamond</code></td>
+              <td>
+                Polled once per second. Stores your <strong>current</strong> held
+                count, not a running total.
+              </td>
+            </tr>
+            <tr>
+              <td><code>reach_stat</code></td>
+              <td>a custom stat, e.g. <code>minecraft:jump</code></td>
+              <td>
+                Polled once per second. Stores the stat's current value.
+                <strong>Custom stats only</strong> &mdash; not vanilla ones like
+                <code>minecraft:walk_one_cm</code>.
+              </td>
+            </tr>
+            <tr>
+              <td><code>grant_advancement</code></td>
+              <td>an advancement id</td>
+              <td>
+                Polled once per second. Completes when the advancement is done.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note warn">
+        <span class="t">Current value, not a counter</span>
+        <code>collect_item</code>, <code>reach_stat</code> and
+        <code>grant_advancement</code> read the player's <em>present</em> value.
+        If a <code>collect_item</code> quest wants 10 diamonds and you drop your
+        stack, the count falls back below the requirement. Use
+        <code>break_block</code> or <code>kill_entity</code> for goals that should
+        stay completed.
+      </div>
+
+      <p>
+        <code>break_block</code> and <code>kill_entity</code> behave differently:
+        they stop incrementing once the required count is reached, so those
+        objectives stay satisfied permanently.
+      </p>
+
+      <div class="note">
+        <span class="t">All objectives must be satisfied</span>
+        A quest with two objectives needs both complete. Objectives are not
+        alternatives, and there is no optional or hidden-objective flag in 1.0.
+      </div>
+
+      <h2 id="icons">Icons</h2>
+
+      <p>An icon is one of two shapes. Scripta tries the item form first.</p>
+
+      <h3>Item or block icon</h3>
+      <div class="copy-wrap"><pre><code>"icon": { "id": "minecraft:oak_log", "count": 1 }</code></pre></div>
+      <p>
+        <code>id</code> is required; <code>count</code> defaults to <code>1</code>
+        and controls the stack size drawn.
+      </p>
+
+      <h3>Texture icon</h3>
+      <div class="copy-wrap"><pre><code>"icon": "scripta:web_icons/dragon.png"</code></pre></div>
+      <p>
+        A bare <code>namespace:path</code> pointing at a texture. Use one from a
+        resource pack, or upload a PNG through the
+        <a href="editor.html#icons">web editor</a> &mdash; uploaded icons are
+        stored as <code>scripta:web_icons/&lt;name&gt;.png</code> and synced to
+        every connected client automatically.
+      </p>
+
+      <h2 id="prerequisites">Prerequisites</h2>
+
+      <p>
+        A quest is locked until every quest id in <code>prerequisites</code> is
+        completed. Locked quests appear greyed out and cannot be opened.
+      </p>
+
+      <div class="copy-wrap"><pre><code>"prerequisites": [
+  "mypack:getting_started/chop_oak",
+  "mypack:getting_started/slay_zombie"
+]</code></pre></div>
+
+      <div class="note">
+        <span class="t">Prerequisites are not validated at load</span>
+        A typo in a prerequisite id silently leaves that quest permanently locked
+        &mdash; there is no warning. Double-check ids, or let the editor's
+        prerequisite chips do it for you.
+      </div>
+
+      <h2 id="autoclaim"><code>auto_claim</code></h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Value</th><th>Behaviour</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>true</code> <span class="badge">default</span></td>
+              <td>
+                Non-interactive rewards are granted the instant the quest
+                completes. Choice rewards still need the player to pick.
+              </td>
+            </tr>
+            <tr>
+              <td><code>false</code></td>
+              <td>
+                Nothing is granted automatically. The quest detail shows
+                <strong>Claim</strong>, <strong>Choose</strong> and
+                <strong>Claim All</strong> buttons instead.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Claim state is stored per player and synced, so a player cannot claim the
+        same reward twice.
+      </p>
+
+      <h2 id="numbering">Numbered categories</h2>
+
+      <p>
+        Give a category a non-zero <code>number</code> and the editors will
+        generate hierarchical quest ids for it:
+      </p>
+
+      <div class="copy-wrap"><pre><code>{
+  "id": "mypack:story",
+  "display_name": "Story",
+  "icon": { "id": "minecraft:book", "count": 1 },
+  "sort_order": 0,
+  "number": 1
+}</code></pre></div>
+
+      <p>
+        Quests in that category become <code>mypack:1.1</code>, <code>mypack:1.2</code>,
+        and so on &mdash; the editor's <em>Auto</em> button fills these in for you.
+      </p>
+
+      <div class="note">
+        <span class="t">Backwards compatible</span>
+        A category with no <code>number</code> (or <code>0</code>) keeps classic
+        free-form ids, so all existing content stays valid.
+      </div>
+
+      <h2 id="reload">Reloading &amp; syncing</h2>
+
+      <ul>
+        <li><code>/reload</code> re-reads both folders and logs the result, e.g. <code>[scripta] Loaded 12 quest(s) from datapacks.</code></li>
+        <li>A malformed file logs a parse error and is skipped &mdash; it never aborts the whole load.</li>
+        <li>Definitions are broadcast to every player within a second of changing, and on join.</li>
+        <li>Deleting a quest file prunes it from every player's completed list.</li>
+      </ul>
+
+      <div class="note">
+        <span class="t">Editors do not need a reload</span>
+        Saving in the <a href="editor.html">web or in-game editor</a> applies
+        instantly and pushes to all players. <code>/reload</code> is only for
+        hand-edited datapack files.
+      </div>
+
+      <div class="pager">
+        <a href="commands.html">&larr; Commands &amp; keybinds</a>
+        <a href="rewards.html">Rewards &amp; tables &rarr;</a>
+      </div>
+
+    </div>
+
+    <div class="page-foot">
+      <span>Scripta v1.0.0 &middot; Minecraft 1.21.1 &middot; Fabric</span>
+      <span>Docs for the 1.0 release</span>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

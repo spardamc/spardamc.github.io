@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mana economy — Florarium · Sparda</title>
+<meta name="description" content="How Florarium's mana economy works: the unlimited Mana Pool, daylight and fuel generation, XP conversion, Mana Relays, and garden layout rules.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2312261a'/%3E%3Ctext x='32' y='44' font-family='sans-serif' font-size='36' font-weight='bold' text-anchor='middle' fill='%237dd87d'%3EF%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<meta name="theme-color" content="#101014">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mana economy — Florarium · Sparda">
+<meta property="og:description" content="How Florarium's mana economy works: the unlimited Mana Pool, daylight and fuel generation, XP conversion, Mana Relays, and garden layout rules.">
+<noscript><style>@media (max-width: 900px){.sidebar{position:static;transform:none;height:auto;box-shadow:none}.topbar .burger{display:none}}</style></noscript>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark" aria-hidden="true">F</span>
+      <span>
+        <span class="name">Florarium</span><br>
+        <span class="ver">In development</span>
+      </span>
+    </a>
+
+    <div class="nav-group">Team</div>
+    <a class="nav" href="../index.html">Team Home</a>
+    <a class="nav" href="../mods.html">All Mods</a>
+
+    <div class="nav-group">Mod docs</div>
+    <a class="nav" href="../docs/index.html">Scripta <span class="nav-badge on">Available</span></a>
+    <a class="nav" href="index.html">Florarium <span class="nav-badge">In dev</span></a>
+    <a class="nav" href="../divinity/index.html">Divinity Music <span class="nav-badge">In dev</span></a>
+
+    <div class="nav-group">Florarium guide</div>
+    <a class="nav" href="index.html">Overview</a>
+    <a class="nav" href="mana.html">Mana economy</a>
+    <a class="nav" href="blooms.html">Bloom chain</a>
+    <a class="nav" href="stations.html">Stations &amp; miners</a>
+    <a class="nav" href="magic.html">Bloom Magic &amp; FX</a>
+
+    <div class="sidebar-foot">
+      <a href="../index.html">Team Site</a>
+      <br>Florarium &middot; in development &middot; MC 1.21.1
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">&#9776;</button>
+      <span class="label">Florarium docs &middot; Sparda</span>
+    </div>
+
+    <div class="content">
+
+      <h1>Mana economy</h1>
+      <p class="lead">
+        Mana is the single resource everything drinks from. One unlimited pool,
+        many generators, and layout rules that punish lazy gardening.
+      </p>
+
+      <div class="toc">
+        <div class="t">On this page</div>
+        <ol>
+          <li><a href="#pool">The Mana Pool</a></li>
+          <li><a href="#feeding">Feeding the pool</a></li>
+          <li><a href="#spending">Spending and reach</a></li>
+          <li><a href="#generators">Flower generators</a></li>
+          <li><a href="#layout">Garden layout rules</a></li>
+          <li><a href="#spells">Spell casting draws mana</a></li>
+        </ol>
+      </div>
+
+      <h2 id="pool">The Mana Pool</h2>
+
+      <p>
+        The <strong>Mana Pool</strong> is the only storage, and it is
+        <strong>unlimited</strong>. A balance of 50,000 reads as
+        &ldquo;full&rdquo; for the visible water level (0&ndash;8 fill states),
+        bonuses, and conversions — but it never caps.
+      </p>
+
+      <ul>
+        <li>Flowers and machines drink from the nearest pool within <strong>8 blocks</strong>.</li>
+        <li>Touching pools share one bank (a connected-component network, up to 128 blocks).</li>
+        <li>Daylight trickles <strong>6 mana/s</strong> into sky-open pools.</li>
+      </ul>
+
+      <h2 id="feeding">Feeding the pool</h2>
+
+      <p>Beyond flowers and daylight, the pool accepts direct offerings:</p>
+
+      <ul>
+        <li><strong>Fuel items</strong> thrown in for mana — e.g. lava bucket 4000, coal block 3600, blaze rod 600.</li>
+        <li><strong>XP conversion:</strong> 1 level &rarr; 1000 mana, with a 5-minute cooldown per player.</li>
+        <li><strong>Attunement conversions:</strong> ender pearls and diamonds thrown near a sufficiently full pool auto-convert to <strong>Bloom Pearls</strong> (1000 mana) and <strong>Bloom Diamonds</strong> (2500 mana).</li>
+      </ul>
+
+      <h2 id="spending">Spending and reach</h2>
+
+      <p>
+        Stations and auras drink pool mana within 8 blocks. To feed distant
+        farms, chain <strong>Mana Relays</strong>: touch one to a pool (any side),
+        chain more outward, and right-click a relay to read the mana it carries.
+      </p>
+
+      <h2 id="generators">Flower generators</h2>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Flower</th><th>Output</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Ember Wick</td><td><code>14</code> every 3 s</td><td>First generator; tall, 2 blocks</td></tr>
+          <tr><td>Sorcerer Flower</td><td><code>50</code> every 5 s</td><td>Side-chain craft</td></tr>
+          <tr><td>Cinder Bloom</td><td><code>90&ndash;165/s</code></td><td>Scales with nearby lava</td></tr>
+          <tr><td>Condensed variants</td><td><code>2.5&times;</code> the above</td><td>8 base flowers + condensed essence each</td></tr>
+          <tr><td>Prism Bloom</td><td><code>2000/s</code> + Luck aura</td><td>Capstone; the best generator, full stop</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2 id="layout">Garden layout rules</h2>
+
+      <ul>
+        <li>Same-flower neighbours <strong>halve output each</strong> (up to 6 halvings) — spread gardens out.</li>
+        <li><strong>Duskbell</strong> boosts nearby night output &times;1.25.</li>
+        <li><strong>Diamond Bloom</strong> adds +10% generation nearby.</li>
+        <li><strong>Twilight Bloom</strong> doubles nearby generation at full moon.</li>
+        <li><strong>Fertilizer</strong> splash: a 3-minute buff — double mana, +30% essence chance, halved cooldowns.</li>
+      </ul>
+
+      <h2 id="spells">Spell casting draws mana</h2>
+
+      <p>
+        Through the legacy mana bridge, every spell cast drains pool mana by
+        tier: T1 costs 20, T2 costs 60, T3/T4 cost 150, and T5+ costs 250.
+        Florarium ships no wands or spells of its own — install
+        <strong>Wizards (RPG Series)</strong> alongside, and its spells draw from
+        your pools through this bridge. See
+        <a href="magic.html">Bloom Magic &amp; FX</a> for the engine status.
+      </p>
+
+      <div class="pager">
+        <a href="index.html">&larr; Overview</a>
+        <a href="blooms.html">Bloom chain &rarr;</a>
+      </div>
+
+    </div>
+
+    <div class="page-foot">
+      <span>Florarium &middot; in development &middot; Sparda team site</span>
+      <span>2026</span>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — Sparda</title>
+<meta name="description" content="Support for Sparda mods: Scripta troubleshooting and FAQ, what to do while Florarium and Divinity Music are unreleased, and how to report issues.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314141a'/%3E%3Ctext x='32' y='44' font-family='sans-serif' font-size='36' font-weight='bold' text-anchor='middle' fill='%2355ffff'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+<meta name="theme-color" content="#101014">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Support — Sparda">
+<meta property="og:description" content="Support for Sparda mods: Scripta troubleshooting and FAQ, what to do while Florarium and Divinity Music are unreleased, and how to report issues.">
+<noscript><style>@media (max-width: 900px){.sidebar{position:static;transform:none;height:auto;box-shadow:none}.topbar .burger{display:none}}</style></noscript>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">S</span>
+      <span>
+        <span class="name">Sparda</span><br>
+        <span class="ver">Team Site</span>
+      </span>
+    </a>
+
+    <div class="nav-group">Team</div>
+    <a class="nav" href="index.html">Home</a>
+    <a class="nav" href="mods.html">Our Mods</a>
+    <a class="nav" href="team.html">The Team</a>
+
+    <div class="nav-group">Mod docs</div>
+    <a class="nav" href="docs/index.html">Scripta <span class="nav-badge on">Available</span></a>
+    <a class="nav" href="florarium/index.html">Florarium <span class="nav-badge">In dev</span></a>
+    <a class="nav" href="divinity/index.html">Divinity Music <span class="nav-badge">In dev</span></a>
+
+    <div class="nav-group">Community</div>
+    <a class="nav" href="support.html">Support &amp; FAQ</a>
+
+    <div class="sidebar-foot">
+      <a href="https://github.com/spardamc">GitHub</a> &middot;
+      <a href="https://www.curseforge.com/members/pqlle/projects">CurseForge</a>
+      <br>&copy; 2026 Sparda Team
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">&#9776;</button>
+      <span class="label">Support</span>
+    </div>
+
+    <div class="content">
+
+      <h1>Support &amp; FAQ</h1>
+      <p class="lead">Scripta is released and supported. Florarium and Divinity Music are not out yet — here is what to do in each case.</p>
+
+      <div class="toc">
+        <div class="t">Jump to</div>
+        <ol>
+          <li><a href="#general">General support &amp; reporting issues</a></li>
+          <li><a href="#scripta-faq">Scripta FAQ</a></li>
+          <li><a href="#scripta-trouble">Scripta troubleshooting</a></li>
+          <li><a href="#florarium-status">Florarium status</a></li>
+          <li><a href="#divinity-status">Divinity Music status</a></li>
+        </ol>
+      </div>
+
+      <h2 id="general">General support &amp; reporting issues</h2>
+      <p>The fastest way to get support for any of our mods is through our GitHub Issues pages. Please check if your issue has already been reported before opening a new one.</p>
+
+      <div class="btn-row">
+        <a class="btn" href="https://github.com/spardamc/scripta/issues">Scripta Issues</a>
+        <a class="btn" href="https://github.com/spardamc/florarium/issues">Florarium Issues</a>
+      </div>
+
+      <p>If you found a bug, please include your mod version, Minecraft version, loader version, and a <code>latest.log</code> file in your report. For content problems (a quest that will not load, a recipe that will not fire), include the relevant JSON file and any <code>Quest parse error</code> or datapack lines from the server log.</p>
+
+      <h2 id="scripta-faq">Scripta FAQ</h2>
+
+      <h3>The mod loaded but there are no quests</h3>
+      <p>That is expected. Scripta ships three starter categories but zero quests. Quests are yours to author. Start in the <a href="docs/quests.html">quest reference</a> or use an editor.</p>
+
+      <h3>Do I need to install OwoLib?</h3>
+      <p>No. OwoLib is bundled inside the Scripta jar. Installing a separate OwoLib jar will trigger a duplicate-mod error.</p>
+
+      <h3>My quest does not appear</h3>
+      <p>Check that its <code>category</code> points at a category ID that exists, its ID is unique, and you ran <code>/reload</code> after manual edits. Check the server log for parse errors.</p>
+
+      <h3>Where do I get the web editor link?</h3>
+      <p>Operators receive it automatically in chat on join. You can also run <code>/scripta web</code> (operator level 2) to send it again.</p>
+
+      <h3>How do I reset a player?</h3>
+      <p>Run <code>/scripta reset &lt;player&gt;</code> as an operator. Note that this resets progress but keeps the record of claimed rewards for data integrity.</p>
+
+      <p>The full FAQ — authoring, rewards, the web editor token, loot crates, progress resets, and log reading — lives at <a href="docs/faq.html">Scripta FAQ</a>.</p>
+
+      <h2 id="scripta-trouble">Scripta troubleshooting</h2>
+
+      <h3>The mod will not load</h3>
+      <ul>
+        <li>Confirm Minecraft is exactly <code>1.21.1</code>.</li>
+        <li>Confirm Fabric Loader is <code>0.16.9</code> or newer.</li>
+        <li>Confirm Fabric API and Architectury API are both installed.</li>
+        <li>Remove any separate OwoLib jar — it is already bundled.</li>
+      </ul>
+
+      <h3>A quest shows up as <em>Unknown reward</em></h3>
+      <p>The quest uses a reward type this version does not know. Scripta keeps it intact rather than discarding the quest, so it will start working once the server runs a version that supports that type.</p>
+
+      <h3>My theme change did nothing</h3>
+      <ul>
+        <li>Check the surface name for typos — unrecognised values fall back to <code>PANEL</code> silently.</li>
+        <li>Check colours are valid 32-bit values if you hand-edited the file.</li>
+        <li>Confirm you saved — an unsaved theme is never broadcast.</li>
+      </ul>
+
+      <h3>Reading the server log</h3>
+      <p>Scripta prefixes its messages, so filter for <code>[scripta]</code> — loaded quest/category counts, quest parse errors, skipped rewards, and web editor port problems all show up there. Full detail: <a href="docs/faq.html#troubleshooting">FAQ troubleshooting</a>.</p>
+
+      <h2 id="florarium-status">Florarium status</h2>
+
+      <h3>When can I download Florarium?</h3>
+      <p>Florarium is currently in <strong>active development</strong> and is not yet available for public download. There is no release date — follow the <a href="florarium/index.html">Florarium docs</a> to see what is built and what is still roadmap.</p>
+
+      <h3>Which Minecraft version will it support?</h3>
+      <p>Like all current Sparda projects, Florarium targets <strong>Minecraft 1.21.1 on Fabric</strong> (Java 21, Mojang mappings), with Fabric API, Spell Engine, Spell Power, and Tiny Config as dependencies.</p>
+
+      <h3>Can I report issues or contribute before release?</h3>
+      <p>Yes — the <a href="https://github.com/spardamc/florarium/issues">Florarium issue tracker</a> is open. Design questions are welcome too; reference the <a href="florarium/blooms.html">bloom chain</a> or <a href="florarium/magic.html">Bloom Magic status</a> pages so we know which system you mean.</p>
+
+      <h2 id="divinity-status">Divinity Music status</h2>
+
+      <h3>When can I download Divinity Music?</h3>
+      <p>Divinity Music is in <strong>development</strong> and is not yet available for public download. The seven discs are built; divine artifacts, acquisition tuning, and release packaging are still roadmap. See the <a href="divinity/index.html">Divinity docs</a>.</p>
+
+      <h3>Which Minecraft version will it support?</h3>
+      <p>Minecraft 1.21.1 on Fabric (Java 21), with Fabric API as its dependency.</p>
+
+      <div class="note">
+        <span class="t">Report a Bug</span>
+        If you've found a bug, please include your mod version, Minecraft version, and a latest.log file in your report.
+      </div>
+
+    </div>
+
+    <div class="page-foot">
+      <span>Sparda &middot; Fabric Modding Team</span>
+      <span>2026</span>
+    </div>
+  </div>
+</div>
+
+<script src="assets/script.js"></script>
+</body>
+</html>

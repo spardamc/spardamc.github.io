@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Listening experience — Divinity Music · Sparda</title>
+<meta name="description" content="How Divinity Music plays in game: vanilla jukebox playback, the persistent Now Playing HUD, subtitles, and the Divinity creative tab.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23201a2e'/%3E%3Ctext x='32' y='44' font-family='sans-serif' font-size='36' font-weight='bold' text-anchor='middle' fill='%23c9a6ff'%3ED%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<meta name="theme-color" content="#101014">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Listening experience — Divinity Music · Sparda">
+<meta property="og:description" content="How Divinity Music plays in game: vanilla jukebox playback, the persistent Now Playing HUD, subtitles, and the Divinity creative tab.">
+<noscript><style>@media (max-width: 900px){.sidebar{position:static;transform:none;height:auto;box-shadow:none}.topbar .burger{display:none}}</style></noscript>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark" aria-hidden="true">D</span>
+      <span>
+        <span class="name">Divinity Music</span><br>
+        <span class="ver">In development</span>
+      </span>
+    </a>
+
+    <div class="nav-group">Team</div>
+    <a class="nav" href="../index.html">Team Home</a>
+    <a class="nav" href="../mods.html">All Mods</a>
+
+    <div class="nav-group">Mod docs</div>
+    <a class="nav" href="../docs/index.html">Scripta <span class="nav-badge on">Available</span></a>
+    <a class="nav" href="../florarium/index.html">Florarium <span class="nav-badge">In dev</span></a>
+    <a class="nav" href="index.html">Divinity Music <span class="nav-badge">In dev</span></a>
+
+    <div class="nav-group">Divinity guide</div>
+    <a class="nav" href="index.html">Overview</a>
+    <a class="nav" href="discs.html">Discs &amp; tracks</a>
+    <a class="nav" href="listening.html">Listening experience</a>
+    <a class="nav" href="artifacts.html">Artifacts &amp; roadmap</a>
+
+    <div class="sidebar-foot">
+      <a href="../index.html">Team Site</a>
+      <br>Divinity Music &middot; in development &middot; MC 1.21.1
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">&#9776;</button>
+      <span class="label">Divinity docs &middot; Sparda</span>
+    </div>
+
+    <div class="content">
+
+      <h1>Listening experience</h1>
+      <p class="lead">
+        Built on the vanilla jukebox, with a persistent overlay so you always
+        know what is playing.
+      </p>
+
+      <div class="toc">
+        <div class="t">On this page</div>
+        <ol>
+          <li><a href="#jukebox">Jukebox playback</a></li>
+          <li><a href="#hud">Now Playing HUD</a></li>
+          <li><a href="#tab">Creative tab</a></li>
+        </ol>
+      </div>
+
+      <h2 id="jukebox">Jukebox playback</h2>
+
+      <p>
+        The discs play through the <strong>vanilla jukebox</strong> — each disc
+        is jukebox-playable and bound to its jukebox song, so comparator
+        outputs, track lengths, and song titles all behave like vanilla discs.
+        See the <a href="discs.html#tracks">track table</a> for lengths and
+        comparator values.
+      </p>
+
+      <h2 id="hud">Now Playing HUD</h2>
+
+      <p>
+        While a Divinity track is active, a persistent
+        <strong>Now Playing overlay</strong> renders at the top centre of the
+        screen, below the boss bar:
+      </p>
+
+      <ul>
+        <li>Shows the current song title (already in &ldquo;Divinity - X&rdquo; form via localisation).</li>
+        <li>A progress bar under the text tracks playback against the song's length.</li>
+        <li>It respects hidden GUI (nothing renders with GUI hidden) and clears when the track ends.</li>
+      </ul>
+
+      <p>
+        A client-side tracker follows the jukebox song player — when a Divinity
+        song starts, the HUD picks up its title and duration; when it stops, the
+        overlay clears.
+      </p>
+
+      <h2 id="tab">Creative tab</h2>
+
+      <p>
+        All seven discs live in a dedicated <strong>Divinity</strong> creative
+        tab, using the White Ferrari disc as its icon. Item names, track
+        descriptions, jukebox titles, and subtitles are localised in
+        <strong>English and Italian</strong>.
+      </p>
+
+      <div class="pager">
+        <a href="discs.html">&larr; Discs &amp; tracks</a>
+        <a href="artifacts.html">Artifacts &amp; roadmap &rarr;</a>
+      </div>
+
+    </div>
+
+    <div class="page-foot">
+      <span>Divinity Music &middot; in development &middot; Sparda team site</span>
+      <span>2026</span>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

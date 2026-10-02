@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GUI theme — Scripta</title>
+<meta name="description" content="Scripta GUI theme reference: every theme field, valid surface values including custom image backgrounds, colour encoding and where the theme is stored.">
+<link rel="icon" href="../assets/icon.png" type="image/png">
+<link rel="stylesheet" href="../assets/style.css">
+<meta name="theme-color" content="#101014">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GUI theme — Scripta">
+<meta property="og:description" content="Scripta GUI theme reference: every theme field, valid surface values including custom image backgrounds, colour encoding and where the theme is stored.">
+<noscript><style>@media (max-width: 900px){.sidebar{position:static;transform:none;height:auto;box-shadow:none}.topbar .burger{display:none}}</style></noscript>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="../index.html">
+      <img src="../assets/icon.png" alt="Scripta logo">
+      <span>
+        <span class="name">Scripta</span><br>
+        <span class="ver">v1.0.0</span>
+      </span>
+    </a>
+
+    <div class="nav-group">Team</div>
+    <a class="nav" href="../index.html">Team Home</a>
+    <a class="nav" href="../mods.html">All Mods</a>
+
+    <div class="nav-group">Mod docs</div>
+    <a class="nav" href="index.html">Scripta <span class="nav-badge on">Available</span></a>
+    <a class="nav" href="../florarium/index.html">Florarium <span class="nav-badge">In dev</span></a>
+    <a class="nav" href="../divinity/index.html">Divinity Music <span class="nav-badge">In dev</span></a>
+
+    <div class="nav-group">Getting started</div>
+    <a class="nav" href="index.html">Overview</a>
+    <a class="nav" href="install.html">Installation</a>
+    <a class="nav" href="commands.html">Commands &amp; keybinds</a>
+
+    <div class="nav-group">Authoring</div>
+    <a class="nav" href="quests.html">Quests &amp; categories</a>
+    <a class="nav" href="rewards.html">Rewards &amp; tables</a>
+    <a class="nav" href="editor.html">Editors</a>
+
+    <div class="nav-group">Reference</div>
+    <a class="nav" href="theming.html">GUI theme</a>
+    <a class="nav" href="files.html">Files &amp; storage</a>
+    <a class="nav" href="faq.html">FAQ</a>
+
+    <div class="sidebar-foot">
+      <a href="https://www.curseforge.com/minecraft/mc-mods/scripta">CurseForge</a> &middot;
+      <a href="../index.html">Team Site</a>
+      <br>Scripta v1.0.0 &middot; MC 1.21.1 &middot; Fabric
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">&#9776;</button>
+      <span class="label">Scripta docs &middot; Sparda</span>
+    </div>
+
+    <div class="content">
+
+      <h1>GUI theme</h1>
+      <p class="lead">
+        Scripta's quest book is fully themeable: per-pane backgrounds, colours,
+        sizes and widget styles. Edit it from the
+        <strong>GUI theme</strong> panel in either editor &mdash; every player sees
+        changes the moment you save.
+      </p>
+
+      <div class="toc">
+        <div class="t">On this page</div>
+        <ol>
+          <li><a href="#editing">Editing the theme</a></li>
+          <li><a href="#surfaces">Surface values</a></li>
+          <li><a href="#fields">Top-level fields</a></li>
+          <li><a href="#widgets">Widget colours</a></li>
+          <li><a href="#default">Default theme JSON</a></li>
+          <li><a href="#caveats">Caveats</a></li>
+        </ol>
+      </div>
+
+      <h2 id="editing">Editing the theme</h2>
+
+      <ol>
+        <li>
+          Open the web editor (<code>/scripta web</code>) or run
+          <code>/questedit</code>.
+        </li>
+        <li>Select the <strong>GUI theme</strong> panel.</li>
+        <li>Change any field and press <strong>Save</strong>.</li>
+      </ol>
+
+      <p>
+        Saving broadcasts the theme to every connected player immediately &mdash;
+        no restart, no rejoin. The theme is stored per world at
+        <code>serverconfig/scripta_theme.json</code>.
+      </p>
+
+      <h2 id="surfaces">Surface values</h2>
+
+      <p>
+        Each pane's background is chosen from a small set of named surfaces, or
+        from a texture of your own.
+      </p>
+
+      <ul class="pill-list">
+        <li>VANILLA_TRANSLUCENT</li>
+        <li>PANEL</li>
+        <li>PANEL_INSET</li>
+        <li>DARK_PANEL</li>
+        <li>BLANK</li>
+        <li>image:&lt;texture&gt;</li>
+      </ul>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Value</th><th>Effect</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>VANILLA_TRANSLUCENT</code></td><td>Minecraft's own translucent panel.</td></tr>
+            <tr><td><code>PANEL</code></td><td>A standard raised panel.</td></tr>
+            <tr><td><code>PANEL_INSET</code></td><td>A recessed panel &mdash; reads well for selected tabs.</td></tr>
+            <tr><td><code>DARK_PANEL</code></td><td>A darker flat panel.</td></tr>
+            <tr><td><code>BLANK</code></td><td>No background at all.</td></tr>
+            <tr><td><code>image:&lt;texture&gt;</code></td><td>Draws your own texture. See below.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Custom background textures</h3>
+
+      <p>Prefix any texture id with <code>image:</code>:</p>
+
+      <div class="copy-wrap"><pre><code>"detail_surface": "image:scripta:web_icons/parchment.png"</code></pre></div>
+
+      <p>
+        You can point at a texture from any resource pack, or at a PNG you
+        uploaded through the editor's
+        <a href="editor.html#icons">Icons panel</a>.
+      </p>
+
+      <h2 id="fields">Top-level fields</h2>
+
+      <p>Every field is optional &mdash; anything you leave out keeps its default.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Field</th><th>Type</th><th>Default</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>window_surface</code></td><td>surface</td><td><code>VANILLA_TRANSLUCENT</code></td><td>Background behind the whole window.</td></tr>
+            <tr><td><code>tab_surface</code></td><td>surface</td><td><code>PANEL</code></td><td>Category tab strip.</td></tr>
+            <tr><td><code>tab_selected_surface</code></td><td>surface</td><td><code>PANEL_INSET</code></td><td>The active category's tab.</td></tr>
+            <tr><td><code>list_surface</code></td><td>surface</td><td><code>DARK_PANEL</code></td><td>The quest list pane.</td></tr>
+            <tr><td><code>detail_surface</code></td><td>surface</td><td><code>DARK_PANEL</code></td><td>The quest detail pane.</td></tr>
+            <tr><td><code>title_color</code></td><td>colour</td><td><code>0xFFFFFFFF</code></td><td>Quest and screen titles.</td></tr>
+            <tr><td><code>text_color</code></td><td>colour</td><td><code>0xFFDDDDDD</code></td><td>Body text.</td></tr>
+            <tr><td><code>accent_color</code></td><td>colour</td><td><code>0xFF55FFFF</code></td><td>Accent &mdash; highlights and focus rings.</td></tr>
+            <tr><td><code>text_shadow</code></td><td>bool</td><td><code>true</code></td><td>Drop shadow behind text.</td></tr>
+            <tr><td><code>tab_size</code></td><td>int</td><td><code>36</code></td><td>Category tab size, in pixels.</td></tr>
+            <tr><td><code>quest_icon_size</code></td><td>int</td><td><code>18</code></td><td>Quest icon size in the list.</td></tr>
+            <tr><td><code>category_icon_size</code></td><td>int</td><td><code>24</code></td><td>Category tab icon size.</td></tr>
+            <tr><td><code>list_width</code></td><td>int</td><td><code>170</code></td><td>Width of the quest list pane.</td></tr>
+            <tr><td><code>detail_width</code></td><td>int</td><td><code>230</code></td><td>Width of the detail pane.</td></tr>
+            <tr><td><code>widgets</code></td><td>object</td><td>see below</td><td>Button, field and selection colours.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="widgets">Widget colours</h2>
+
+      <p>The nested <code>widgets</code> object controls interactive elements.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Field</th><th>Default</th><th>Applies to</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>button_bg</code></td><td><code>0xFF3C3C46</code></td><td>Button background.</td></tr>
+            <tr><td><code>button_hover</code></td><td><code>0xFF4A4A58</code></td><td>Button hover.</td></tr>
+            <tr><td><code>button_text</code></td><td><code>0xFFFFFFFF</code></td><td>Button label.</td></tr>
+            <tr><td><code>danger_color</code></td><td><code>0xFFC04545</code></td><td>Destructive actions &mdash; delete buttons.</td></tr>
+            <tr><td><code>muted_color</code></td><td><code>0xFF9A9AA5</code></td><td>Secondary and dimmed text.</td></tr>
+            <tr><td><code>field_bg</code></td><td><code>0xFF121216</code></td><td>Text field background.</td></tr>
+            <tr><td><code>field_focus</code></td><td><code>0xFF55FFFF</code></td><td>Focused field outline.</td></tr>
+            <tr><td><code>selected_bg</code></td><td><code>0xFF2B3648</code></td><td>Selected row or tab.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="default">Default theme JSON</h2>
+
+      <p>
+        This is what Scripta uses out of the box. Copy it into
+        <code>serverconfig/scripta_theme.json</code> and edit from there if you
+        prefer working with the file directly.
+      </p>
+
+      <div class="copy-wrap"><pre><code>{
+  "window_surface": "VANILLA_TRANSLUCENT",
+  "tab_surface": "PANEL",
+  "tab_selected_surface": "PANEL_INSET",
+  "list_surface": "DARK_PANEL",
+  "detail_surface": "DARK_PANEL",
+  "title_color": 0xFFFFFFFF,
+  "text_color": 0xFFDDDDDD,
+  "accent_color": 0xFF55FFFF,
+  "text_shadow": true,
+  "tab_size": 36,
+  "quest_icon_size": 18,
+  "category_icon_size": 24,
+  "list_width": 170,
+  "detail_width": 230,
+  "widgets": {
+    "button_bg": 0xFF3C3C46,
+    "button_hover": 0xFF4A4A58,
+    "button_text": 0xFFFFFFFF,
+    "danger_color": 0xFFC04545,
+    "muted_color": 0xFF9A9AA5,
+    "field_bg": 0xFF121216,
+    "field_focus": 0xFF55FFFF,
+    "selected_bg": 0xFF2B3648
+  }
+}</code></pre></div>
+
+      <h2 id="caveats">Caveats</h2>
+
+      <div class="note warn">
+        <span class="t">Surfaces fail quietly</span>
+        Surface names are case-insensitive, and an unrecognised value falls back
+        to <code>PANEL</code> with no error. If a pane looks wrong, re-check the
+        spelling.
+      </div>
+
+      <div class="note warn">
+        <span class="t">Colours are plain integers</span>
+        Colours are read as numbers, not colour literals. If you hand-edit the
+        file, use a signed 32-bit value: <code>0xFFFFFFFF</code> is written as
+        <code>-1</code>, and <code>0xFF55FFFF</code> as <code>-4208001</code>.
+        Both forms load. Editing through the editor panel avoids the question.
+      </div>
+
+      <div class="note">
+        <span class="t">Fonts are not themeable</span>
+        Scripta draws labels with Minecraft's global fonts, so font changes only
+        come from a resource pack. This is intentional &mdash; a theme file cannot
+        make text unreadable against a custom background by swapping fonts.
+      </div>
+
+      <div class="pager">
+        <a href="editor.html">&larr; Editors</a>
+        <a href="files.html">Files &amp; storage &rarr;</a>
+      </div>
+
+    </div>
+
+    <div class="page-foot">
+      <span>Scripta v1.0.0 &middot; Minecraft 1.21.1 &middot; Fabric</span>
+      <span>Docs for the 1.0 release</span>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>
