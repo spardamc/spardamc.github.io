@@ -1,9 +1,7 @@
 /* Sparda team site — shared stylesheet.
-   Concept: "workbench ledger". A sticky top header (brand + primary nav +
-   mod switcher with status dots) replaces the old fixed sidebar; a sticky
-   section sub-nav carries the per-mod guide links. Each mod section tints
-   the same structure through per-mod tokens on body[data-mod], so you can
-   always tell which workbench you are at.
+   Concept: "workbench ledger". A sticky top header (brand + primary nav)
+   replaces the old fixed sidebar; a sticky section sub-nav carries the
+   Scripta guide links. One accent (forge-gold) runs the whole site.
    Plain static CSS: no imports, no CDN, works from file:// offline. */
 
 :root {
@@ -27,11 +25,6 @@
   --warn: #e8c95c;
   --ok: #6fdc8c;
 
-  --scripta: #f2b544;
-  --flora: #8fe388;
-  --flora-deep: #1d3a24;
-  --divin: #c9a6ff;
-
   --content-max: 1120px;
   --measure: 74ch;
   --radius: 12px;
@@ -43,27 +36,8 @@
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Per-mod identity. The team default is forge-gold; each mod section
-   re-tints the same tokens so structure stays shared, colour tells
-   you where you are. */
-body[data-mod="scripta"] {
-  --accent: #f2b544;
-  --accent-ink: #241a05;
-  --accent-soft: rgba(242, 181, 68, .12);
-  --accent-line: #6b5320;
-}
-body[data-mod="florarium"] {
-  --accent: #8fe388;
-  --accent-ink: #0c2210;
-  --accent-soft: rgba(143, 227, 136, .11);
-  --accent-line: #335c2f;
-}
-body[data-mod="divinity"] {
-  --accent: #c9a6ff;
-  --accent-ink: #221239;
-  --accent-soft: rgba(201, 166, 255, .12);
-  --accent-line: #54407c;
-}
+/* Single site accent (forge-gold). With one public mod there is no
+   per-section tinting: structure stays shared, colour stays constant. */
 
 * { box-sizing: border-box; }
 
@@ -209,59 +183,6 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   color: var(--accent);
   border-color: var(--accent-line);
 }
-
-/* Mod switcher: three pills with a status dot. The dot carries the
-   Available / In-dev meaning at a glance; the label keeps it legible. */
-.mod-switch {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: 0 0 auto;
-}
-.mod-switch .switch-label {
-  font-size: 10.5px;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  color: var(--faint);
-  font-weight: 700;
-}
-.mod-switch .switch-status {
-  font-weight: 400;
-  opacity: .75;
-  font-size: 11.5px;
-}
-.mod-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 12.5px;
-  font-weight: 700;
-  padding: 6px 12px 6px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--panel);
-  color: var(--muted);
-  white-space: nowrap;
-  transition: transform .14s ease, border-color .14s ease, color .14s ease, box-shadow .14s ease;
-}
-.mod-pill:hover {
-  text-decoration: none;
-  color: var(--title);
-  border-color: var(--faint);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-1);
-}
-.mod-pill .dot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 auto; }
-.mod-pill.is-on .dot { background: var(--ok); box-shadow: 0 0 8px rgba(111, 220, 140, .9); }
-.mod-pill.is-dev .dot { background: var(--warn); box-shadow: 0 0 8px rgba(232, 201, 92, .8); }
-.mod-pill.current {
-  color: var(--accent);
-  border-color: var(--accent-line);
-  background: var(--accent-soft);
-}
-.mod-pill--scripta.current { color: var(--scripta); }
-.mod-pill--florarium.current { color: var(--flora); }
-.mod-pill--divinity.current { color: var(--divin); }
 
 .burger {
   display: none;
@@ -588,28 +509,9 @@ td code { white-space: nowrap; }
   background: var(--faint);
   flex: 0 0 auto;
 }
-/* "Available" reads shipped/healthy green; "In development" reads
-   active-work amber. Shape, colour, and text all differ. */
+/* "Available" reads shipped/healthy green through shape, colour, and text. */
 .badge.on { color: #0d2817; border-color: #3fae66; background: var(--ok); font-weight: 700; }
 .badge.on::before { background: #0d2817; }
-.badge.dev { color: #f4d67c; border-color: #6b5a26; background: #241d0c; font-weight: 700; }
-.badge.dev::before { background: var(--warn); box-shadow: 0 0 7px rgba(232, 201, 92, .9); }
-
-/* Per-mod hero tints. Same structure, different glow. */
-.hero--flora {
-  background:
-    radial-gradient(800px 260px at 15% -20%, rgba(143, 227, 136, .14), transparent 65%),
-    repeating-linear-gradient(0deg, transparent 0 27px, rgba(255, 255, 255, .022) 27px 28px),
-    repeating-linear-gradient(90deg, transparent 0 27px, rgba(255, 255, 255, .022) 27px 28px),
-    linear-gradient(180deg, var(--panel), var(--panel-2));
-}
-.hero--div {
-  background:
-    radial-gradient(800px 260px at 15% -20%, rgba(201, 166, 255, .16), transparent 65%),
-    repeating-linear-gradient(0deg, transparent 0 27px, rgba(255, 255, 255, .022) 27px 28px),
-    repeating-linear-gradient(90deg, transparent 0 27px, rgba(255, 255, 255, .022) 27px 28px),
-    linear-gradient(180deg, var(--panel), var(--panel-2));
-}
 
 .btn-row { display: flex; flex-wrap: wrap; gap: 10px; }
 .btn {
@@ -712,7 +614,6 @@ td code { white-space: nowrap; }
 .mod-title.lg { font-size: 26px; }
 .mod-title.md { font-size: 23px; }
 .badge-row { margin-bottom: 14px; }
-.card.roomy { padding: 27px; }
 .grid.team-grid { margin-top: 30px; }
 .card a.push-top { margin-top: 12px; }
 
@@ -858,11 +759,7 @@ kbd {
 
 /* ---------- Responsive ---------- */
 
-@media (max-width: 1220px) {
-  .mod-switch .switch-label { display: none; }
-}
 @media (max-width: 1100px) and (min-width: 961px) {
-  .mod-switch .switch-status { display: none; }
   .topnav a.nav { padding: 8px 9px; font-size: 13.5px; }
   .header-inner { gap: 14px; }
 }
@@ -884,11 +781,6 @@ kbd {
     margin-right: 0;
   }
   .site-header.open .topnav a.nav { padding: 11px 13px; font-size: 15px; }
-  .site-header.open .mod-switch {
-    padding: 4px 0 12px;
-    overflow-x: auto;
-  }
-  .site-header.open .switch-label { display: none; }
   .subnav-inner { padding: 0 16px; }
   .content { padding: 28px 18px 64px; }
   .page-foot { padding: 18px; }
@@ -934,24 +826,6 @@ kbd {
     --shadow-1: 0 1px 2px rgba(60, 50, 20, .12), 0 4px 16px rgba(60, 50, 20, .1);
     --shadow-2: 0 2px 6px rgba(60, 50, 20, .14), 0 14px 30px rgba(60, 50, 20, .12);
   }
-  body[data-mod="scripta"] {
-    --accent: #8a5c00;
-    --accent-ink: #ffffff;
-    --accent-soft: rgba(138, 92, 0, .1);
-    --accent-line: #b98f2e;
-  }
-  body[data-mod="florarium"] {
-    --accent: #1e6b2a;
-    --accent-ink: #ffffff;
-    --accent-soft: rgba(30, 107, 42, .1);
-    --accent-line: #4d9a5b;
-  }
-  body[data-mod="divinity"] {
-    --accent: #5b34a8;
-    --accent-ink: #ffffff;
-    --accent-soft: rgba(91, 52, 168, .09);
-    --accent-line: #8f6fd0;
-  }
   body {
     background:
       radial-gradient(1100px 420px at 50% -160px, rgba(138, 92, 0, .08), transparent 70%),
@@ -959,8 +833,6 @@ kbd {
   }
   .badge.on { color: #ffffff; border-color: #1c7a3d; background: #1c7a3d; }
   .badge.on::before { background: #ffffff; }
-  .badge.dev { color: #5e4600; border-color: #a3862f; background: #f4e7bd; }
-  .badge.dev::before { background: #7a5b00; box-shadow: none; }
   pre { background: #14151c; border-color: #14151c; border-top-color: var(--accent-line); }
   pre code { color: #d3d7e6; }
   .foot-snip { background: #14151c; color: #c6cbe0; border-color: #14151c; border-left-color: var(--accent-line); }
@@ -973,11 +845,6 @@ kbd {
       repeating-linear-gradient(90deg, transparent 0 27px, rgba(20, 21, 28, .03) 27px 28px),
       linear-gradient(180deg, var(--panel), var(--panel-2));
   }
-  .hero--flora, .hero--div { background:
-      radial-gradient(800px 260px at 15% -20%, var(--accent-soft), transparent 65%),
-      repeating-linear-gradient(0deg, transparent 0 27px, rgba(20, 21, 28, .03) 27px 28px),
-      repeating-linear-gradient(90deg, transparent 0 27px, rgba(20, 21, 28, .03) 27px 28px),
-      linear-gradient(180deg, var(--panel), var(--panel-2)); }
   kbd { background: var(--panel); }
 }
 

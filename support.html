@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Support — Sparda</title>
-<meta name="description" content="Support for Sparda mods: Scripta troubleshooting and FAQ, what to do while Florarium and Divinity Music are unreleased, and how to report issues.">
+<meta name="description" content="Support for Scripta: troubleshooting, FAQ, and how to report issues.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314141a'/%3E%3Ctext x='32' y='44' font-family='sans-serif' font-size='36' font-weight='bold' text-anchor='middle' fill='%2355ffff'%3ES%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/style.css">
 <meta name="theme-color" content="#101014">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Support — Sparda">
-<meta property="og:description" content="Support for Sparda mods: Scripta troubleshooting and FAQ, what to do while Florarium and Divinity Music are unreleased, and how to report issues.">
+<meta property="og:description" content="Support for Scripta: troubleshooting, FAQ, and how to report issues.">
 <noscript><style>.burger{display:none !important}.header-nav{display:block !important}.subnav-inner{flex-wrap:wrap;overflow:visible}</style></noscript>
 </head>
-<body data-mod="team" data-layout="landing">
+<body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header" id="site-header">
   <div class="header-inner">
@@ -21,18 +21,14 @@
     <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="header-nav">&#9776;</button>
     <div class="header-nav" id="header-nav">
       <nav class="topnav" aria-label="Primary">
-        <a class="nav" href="index.html">Home</a><a class="nav" href="mods.html">Our Mods</a><a class="nav" href="team.html">The Team</a><a class="nav" href="support.html">Support & FAQ</a>
+        <a class="nav" href="index.html">Home</a><a class="nav" href="mods.html">Our Mod</a><a class="nav" href="team.html">The Team</a><a class="nav" href="support.html">Support</a>
       </nav>
-      <div class="mod-switch" role="group" aria-label="Mod sections">
-        <span class="switch-label" aria-hidden="true">Mods</span>
-        <a class="mod-pill mod-pill--scripta is-on" href="docs/index.html"><span class="dot" aria-hidden="true"></span>Scripta<span class="switch-status" aria-hidden="true"> · Available</span></a><a class="mod-pill mod-pill--florarium is-dev" href="florarium/index.html"><span class="dot" aria-hidden="true"></span>Florarium<span class="switch-status" aria-hidden="true"> · In dev</span></a><a class="mod-pill mod-pill--divinity is-dev" href="divinity/index.html"><span class="dot" aria-hidden="true"></span>Divinity Music<span class="switch-status" aria-hidden="true"> · In dev</span></a>
-      </div>
     </div>
   </div>
   <nav class="subnav" aria-label="In this section">
     <div class="subnav-inner">
-      <span class="crumb" aria-hidden="true">Mods</span>
-      <a class="nav" href="docs/index.html">Scripta docs</a><a class="nav" href="florarium/index.html">Florarium docs</a><a class="nav" href="divinity/index.html">Divinity docs</a>
+      <span class="crumb" aria-hidden="true">Scripta</span>
+      <a class="nav" href="docs/index.html">Scripta docs</a><a class="nav" href="docs/install.html">Installation</a><a class="nav" href="docs/faq.html">FAQ</a>
     </div>
   </nav>
 </header>
@@ -41,7 +37,7 @@
     <main class="content" id="main">
 
       <h1>Support &amp; FAQ</h1>
-      <p class="lead">Scripta is released and supported. Florarium and Divinity Music are not out yet — here is what to do in each case.</p>
+      <p class="lead">Scripta is released and supported. Start here when something goes wrong.</p>
 
       <div class="toc">
         <div class="t">Jump to</div>
@@ -49,17 +45,14 @@
           <li><a href="#general">General support &amp; reporting issues</a></li>
           <li><a href="#scripta-faq">Scripta FAQ</a></li>
           <li><a href="#scripta-trouble">Scripta troubleshooting</a></li>
-          <li><a href="#florarium-status">Florarium status</a></li>
-          <li><a href="#divinity-status">Divinity Music status</a></li>
         </ol>
       </div>
 
       <h2 id="general">General support &amp; reporting issues</h2>
-      <p>The fastest way to get support for any of our mods is through our GitHub Issues pages. Please check if your issue has already been reported before opening a new one.</p>
+      <p>The fastest way to get support for Scripta is through our GitHub Issues page. Please check if your issue has already been reported before opening a new one.</p>
 
       <div class="btn-row">
         <a class="btn" href="https://github.com/spardamc/scripta/issues">Scripta Issues</a>
-        <a class="btn" href="https://github.com/spardamc/florarium/issues">Florarium Issues</a>
       </div>
 
       <p>If you found a bug, please include your mod version, Minecraft version, loader version, and a <code>latest.log</code> file in your report. For content problems (a quest that will not load, a recipe that will not fire), include the relevant JSON file and any <code>Quest parse error</code> or datapack lines from the server log.</p>
@@ -105,25 +98,6 @@
 
       <h3>Reading the server log</h3>
       <p>Scripta prefixes its messages, so filter for <code>[scripta]</code> — loaded quest/category counts, quest parse errors, skipped rewards, and web editor port problems all show up there. Full detail: <a href="docs/faq.html#troubleshooting">FAQ troubleshooting</a>.</p>
-
-      <h2 id="florarium-status">Florarium status</h2>
-
-      <h3>When can I download Florarium?</h3>
-      <p>Florarium is currently in <strong>active development</strong> and is not yet available for public download. There is no release date — follow the <a href="florarium/index.html">Florarium docs</a> to see what is built and what is still roadmap.</p>
-
-      <h3>Which Minecraft version will it support?</h3>
-      <p>Like all current Sparda projects, Florarium targets <strong>Minecraft 1.21.1 on Fabric</strong> (Java 21, Mojang mappings), with Fabric API, Spell Engine, Spell Power, and Tiny Config as dependencies.</p>
-
-      <h3>Can I report issues or contribute before release?</h3>
-      <p>Yes — the <a href="https://github.com/spardamc/florarium/issues">Florarium issue tracker</a> is open. Design questions are welcome too; reference the <a href="florarium/blooms.html">bloom chain</a> or <a href="florarium/magic.html">Bloom Magic status</a> pages so we know which system you mean.</p>
-
-      <h2 id="divinity-status">Divinity Music status</h2>
-
-      <h3>When can I download Divinity Music?</h3>
-      <p>Divinity Music is in <strong>development</strong> and is not yet available for public download. The seven discs are built; divine artifacts, acquisition tuning, and release packaging are still roadmap. See the <a href="divinity/index.html">Divinity docs</a>.</p>
-
-      <h3>Which Minecraft version will it support?</h3>
-      <p>Minecraft 1.21.1 on Fabric (Java 21), with Fabric API as its dependency.</p>
 
       <div class="note">
         <span class="t">Report a Bug</span>

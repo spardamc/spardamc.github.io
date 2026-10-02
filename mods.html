@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mods — Sparda</title>
-<meta name="description" content="The Sparda mod catalogue: Scripta (released questing mod for Fabric 1.21.1), Florarium (in-development mana magic-tech), Divinity Music (in-development custom discs).">
+<title>Our Mod — Sparda</title>
+<meta name="description" content="Scripta is Sparda's released mod: a data-driven global questing mod for Minecraft 1.21.1 on Fabric, with editors, reward tables, and a themeable quest book.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314141a'/%3E%3Ctext x='32' y='44' font-family='sans-serif' font-size='36' font-weight='bold' text-anchor='middle' fill='%2355ffff'%3ES%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/style.css">
 <meta name="theme-color" content="#101014">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Mods — Sparda">
-<meta property="og:description" content="The Sparda mod catalogue: Scripta (released questing mod for Fabric 1.21.1), Florarium (in-development mana magic-tech), Divinity Music (in-development custom discs).">
+<meta property="og:title" content="Our Mod — Sparda">
+<meta property="og:description" content="Scripta is Sparda's released mod: a data-driven global questing mod for Minecraft 1.21.1 on Fabric, with editors, reward tables, and a themeable quest book.">
 <noscript><style>.burger{display:none !important}.header-nav{display:block !important}.subnav-inner{flex-wrap:wrap;overflow:visible}</style></noscript>
 </head>
-<body data-mod="team" data-layout="landing">
+<body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header" id="site-header">
   <div class="header-inner">
@@ -21,18 +21,14 @@
     <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="header-nav">&#9776;</button>
     <div class="header-nav" id="header-nav">
       <nav class="topnav" aria-label="Primary">
-        <a class="nav" href="index.html">Home</a><a class="nav" href="mods.html">Our Mods</a><a class="nav" href="team.html">The Team</a><a class="nav" href="support.html">Support & FAQ</a>
+        <a class="nav" href="index.html">Home</a><a class="nav" href="mods.html">Our Mod</a><a class="nav" href="team.html">The Team</a><a class="nav" href="support.html">Support</a>
       </nav>
-      <div class="mod-switch" role="group" aria-label="Mod sections">
-        <span class="switch-label" aria-hidden="true">Mods</span>
-        <a class="mod-pill mod-pill--scripta is-on" href="docs/index.html"><span class="dot" aria-hidden="true"></span>Scripta<span class="switch-status" aria-hidden="true"> · Available</span></a><a class="mod-pill mod-pill--florarium is-dev" href="florarium/index.html"><span class="dot" aria-hidden="true"></span>Florarium<span class="switch-status" aria-hidden="true"> · In dev</span></a><a class="mod-pill mod-pill--divinity is-dev" href="divinity/index.html"><span class="dot" aria-hidden="true"></span>Divinity Music<span class="switch-status" aria-hidden="true"> · In dev</span></a>
-      </div>
     </div>
   </div>
   <nav class="subnav" aria-label="In this section">
     <div class="subnav-inner">
-      <span class="crumb" aria-hidden="true">Mods</span>
-      <a class="nav" href="docs/index.html">Scripta docs</a><a class="nav" href="florarium/index.html">Florarium docs</a><a class="nav" href="divinity/index.html">Divinity docs</a>
+      <span class="crumb" aria-hidden="true">Scripta</span>
+      <a class="nav" href="docs/index.html">Scripta docs</a><a class="nav" href="docs/install.html">Installation</a><a class="nav" href="docs/faq.html">FAQ</a>
     </div>
   </nav>
 </header>
@@ -40,16 +36,10 @@
 
     <main class="content" id="main">
 
-      <h1>Mod Catalogue</h1>
-      <p class="lead">One shipped release, two projects on the workbench — each documented at its real stage.</p>
-
-      <hr>
-
-      <!-- Scripta -->
       <div class="hero mod-entry">
         <div class="split-row">
           <div>
-            <h2 class="mod-title lg">Scripta</h2>
+            <h1 class="mod-title lg">Scripta</h1>
             <div class="badges badge-row">
               <span class="badge on">Available now</span>
               <span class="badge">v1.0.0</span>
@@ -58,7 +48,7 @@
           </div>
           <a class="btn primary" href="https://www.curseforge.com/minecraft/mc-mods/scripta">Download on CurseForge</a>
         </div>
-        <p>A data-driven <strong>global questing mod</strong> for Minecraft 1.21.1, currently shipping on Fabric. Quests are authored once as JSON data, loaded like advancements, and identical across every world and server — players only carry progress state.</p>
+        <p class="lead">Sparda's released mod: a data-driven <strong>global questing mod</strong> for Minecraft 1.21.1 on Fabric. Quests are authored once as JSON data, loaded like advancements, and identical across every world and server — players only carry progress state.</p>
         <ul>
           <li><strong>Five objective types</strong> — break blocks, kill entities, collect items, reach custom stats, grant advancements — each with its own required count.</li>
           <li><strong>Eleven reward types</strong> — items, XP, XP levels, commands, advancements, toasts, weighted tables, loot crates, and interactive player choices.</li>
@@ -74,42 +64,34 @@
         </div>
       </div>
 
-      <!-- Florarium -->
-      <div class="card roomy mod-entry">
-        <h2 class="mod-title md">Florarium</h2>
-        <div class="badges badge-row">
-          <span class="badge dev">In development</span>
-          <span class="badge">Fabric 1.21.1</span>
+      <h2>Inside the docs</h2>
+      <div class="grid">
+        <div class="card">
+          <h3 class="card-title">Author quests</h3>
+          <p>Categories, quest JSON, objectives, prerequisites, and auto-claim — the full authoring reference.</p>
+          <a href="docs/quests.html">Quest reference &rarr;</a>
         </div>
-        <p>A magic-tech mod built around a <strong>mana economy</strong> and a <strong>28-bloom flower progression chain</strong>. One unlimited Mana Pool anchors everything: daylight, fuels, XP, and flower generators feed it, while crafting stations and spell casts drain it. The flower chain <em>is</em> the tech tree — each bloom crafts the next via the Bloom Apothecary, from Ember Wick through ring rites and the forge tier to the Prism Bloom capstone (2000 mana/s with a Luck aura).</p>
-        <p>Around the chain: six crafting and utility stations with hopper automation, tiered <strong>Bonsai Miners</strong> (T1–T4 ore generation with GUI, auto-smelt, and network routing), garden layout rules that punish monoculture, Prism Ore mining deep underground (y &minus;48 to &minus;8), and a custom particle FX framework. The <strong>Bloom Magic 2.0</strong> spell engine — API interfaces, wand management, and a legacy mana bridge that drains pool mana per spell tier — is still being built, as are the Bonsai Farmer and Glowing Ore blocks.</p>
-        <div class="btn-row">
-          <a class="btn" href="florarium/index.html">Florarium docs</a>
-          <a class="btn" href="florarium/blooms.html">The bloom chain</a>
+        <div class="card">
+          <h3 class="card-title">Rewards and tables</h3>
+          <p>Eleven reward types, weighted tables, loot crates, choices, presets, and validation rules.</p>
+          <a href="docs/rewards.html">Rewards reference &rarr;</a>
         </div>
-        <div class="note">
-          <span class="t">Coming soon — no download yet</span>
-          Florarium is in active development and is not publicly released. There is no download button because there is nothing to download yet.
+        <div class="card">
+          <h3 class="card-title">Editors</h3>
+          <p>The browser web editor and the in-game editor: token links, panels, icon uploads, and the HTTP API.</p>
+          <a href="docs/editor.html">Editor guide &rarr;</a>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Theme the quest book</h3>
+          <p>Per-pane surfaces, colours, sizes, and widget styles for Scripta's GUI.</p>
+          <a href="docs/theming.html">Theme reference &rarr;</a>
         </div>
       </div>
 
-      <!-- Divinity Music -->
-      <div class="card roomy mod-entry">
-        <h2 class="mod-title md">Divinity Music</h2>
-        <div class="badges badge-row">
-          <span class="badge dev">In development</span>
-          <span class="badge">Fabric 1.21.1</span>
-        </div>
-        <p>A focused expansion for Minecraft's audio experience. <strong>Seven custom music discs</strong> — White Ferrari (4:09), Death Metal (4:22), Coffee Bean (3:29), One More (1:39), Woods (4:46), &#40658;&#12356;&#涙; (5:07), Majula (3:19) — each a Rare single-stack jukebox-playable item with a streamed <code>.ogg</code> track, its own jukebox song and comparator output, a shapeless crafting recipe, English and Italian localisations, and per-track subtitles. A dedicated Divinity creative tab holds them all, and a persistent <strong>Now Playing HUD</strong> shows the current track with a progress bar while it plays through a vanilla jukebox.</p>
-        <p>Next on the roadmap: <strong>divine artifacts</strong> with active or passive behaviours (an amulet is named among them), plus recipe and acquisition tuning, client tooltips and particles, and Sodium/Iris compatibility verification. Names like Violastro and Black Vinyl exist in assets but are not working items yet.</p>
-        <div class="btn-row">
-          <a class="btn" href="divinity/index.html">Divinity docs</a>
-          <a class="btn" href="divinity/discs.html">Discs &amp; tracks</a>
-        </div>
-        <div class="note">
-          <span class="t">Coming soon — no download yet</span>
-          Divinity Music is in development and is not publicly released. There is no download button because there is nothing to download yet.
-        </div>
+      <div class="note">
+        <span class="t">Need help?</span>
+        Start with <a href="docs/install.html">Installation</a>, then check the
+        <a href="docs/faq.html">Scripta FAQ</a> or our <a href="support.html">Support page</a>.
       </div>
 
     </main>

@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sparda — Minecraft Development Team</title>
-<meta name="description" content="Sparda is a small Minecraft modding team: Scripta (released questing mod), Florarium (in-development mana magic-tech), and Divinity Music (in-development custom discs).">
+<meta name="description" content="Sparda is a small Minecraft modding team. Our released work is Scripta, a data-driven global questing mod for Fabric 1.21.1.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314141a'/%3E%3Ctext x='32' y='44' font-family='sans-serif' font-size='36' font-weight='bold' text-anchor='middle' fill='%2355ffff'%3ES%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/style.css">
 <meta name="theme-color" content="#101014">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Sparda — Minecraft Development Team">
-<meta property="og:description" content="Sparda is a small Minecraft modding team: Scripta (released questing mod), Florarium (in-development mana magic-tech), and Divinity Music (in-development custom discs).">
+<meta property="og:description" content="Sparda is a small Minecraft modding team. Our released work is Scripta, a data-driven global questing mod for Fabric 1.21.1.">
 <noscript><style>.burger{display:none !important}.header-nav{display:block !important}.subnav-inner{flex-wrap:wrap;overflow:visible}</style></noscript>
 </head>
-<body data-mod="team" data-layout="landing">
+<body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header" id="site-header">
   <div class="header-inner">
@@ -21,18 +21,14 @@
     <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="header-nav">&#9776;</button>
     <div class="header-nav" id="header-nav">
       <nav class="topnav" aria-label="Primary">
-        <a class="nav" href="index.html">Home</a><a class="nav" href="mods.html">Our Mods</a><a class="nav" href="team.html">The Team</a><a class="nav" href="support.html">Support & FAQ</a>
+        <a class="nav" href="index.html">Home</a><a class="nav" href="mods.html">Our Mod</a><a class="nav" href="team.html">The Team</a><a class="nav" href="support.html">Support</a>
       </nav>
-      <div class="mod-switch" role="group" aria-label="Mod sections">
-        <span class="switch-label" aria-hidden="true">Mods</span>
-        <a class="mod-pill mod-pill--scripta is-on" href="docs/index.html"><span class="dot" aria-hidden="true"></span>Scripta<span class="switch-status" aria-hidden="true"> · Available</span></a><a class="mod-pill mod-pill--florarium is-dev" href="florarium/index.html"><span class="dot" aria-hidden="true"></span>Florarium<span class="switch-status" aria-hidden="true"> · In dev</span></a><a class="mod-pill mod-pill--divinity is-dev" href="divinity/index.html"><span class="dot" aria-hidden="true"></span>Divinity Music<span class="switch-status" aria-hidden="true"> · In dev</span></a>
-      </div>
     </div>
   </div>
   <nav class="subnav" aria-label="In this section">
     <div class="subnav-inner">
-      <span class="crumb" aria-hidden="true">Mods</span>
-      <a class="nav" href="docs/index.html">Scripta docs</a><a class="nav" href="florarium/index.html">Florarium docs</a><a class="nav" href="divinity/index.html">Divinity docs</a>
+      <span class="crumb" aria-hidden="true">Scripta</span>
+      <a class="nav" href="docs/index.html">Scripta docs</a><a class="nav" href="docs/install.html">Installation</a><a class="nav" href="docs/faq.html">FAQ</a>
     </div>
   </nav>
 </header>
@@ -44,66 +40,66 @@
         <h1>We build for Minecraft.</h1>
         <p class="lead">
           Sparda is a small collective of developers and artists creating deeply integrated,
-          data-driven, and visually polished experiences for the Fabric ecosystem. One project
-          is finished and shipped; two more are on the workbench.
+          data-driven, and visually polished experiences for the Fabric ecosystem. Our
+          released work is Scripta — a global questing mod with full documentation and
+          long-term support.
         </p>
 
         <div class="btn-row">
-          <a class="btn primary" href="mods.html">Browse our mods</a>
+          <a class="btn primary" href="mods.html">Meet our mod</a>
           <a class="btn" href="team.html">Meet the team</a>
         </div>
       </div>
 
-      <h2>Our mods</h2>
+      <h2>What we build</h2>
+      <p>
+        We make mods that feel like a natural extension of the game: systems that server
+        operators can configure as plain data, interfaces that respect the vanilla
+        aesthetic, and behaviour that stays predictable in production. Scripta is that
+        philosophy shipped — author quests once as JSON, track objectives with
+        prerequisites, and hand out rewards from items and XP to commands, weighted
+        tables, and interactive choices, all inside a themeable in-game quest book with
+        a browser-based editor.
+      </p>
+      <p>
+        <span class="badge on">Available now · Scripta v1.0.0</span>
+      </p>
+      <div class="btn-row">
+        <a class="btn" href="docs/index.html">Scripta docs</a>
+        <a class="btn" href="https://www.curseforge.com/minecraft/mc-mods/scripta">Download on CurseForge</a>
+      </div>
+
+      <h2>Our quality bar</h2>
       <div class="grid">
         <div class="card">
-          <h3 class="card-title">Scripta</h3>
-          <p>A data-driven global questing mod for Minecraft 1.21.1: author quests once as JSON, track objectives with prerequisites, and hand out rewards from items and XP to commands, weighted tables, and interactive choices — all in a themeable in-game quest book with a browser-based editor.</p>
-          <p><span class="badge on">Available now · v1.0.0</span></p>
-          <a href="docs/index.html">Start here: Scripta docs &rarr;</a>
-          <a href="https://www.curseforge.com/minecraft/mc-mods/scripta">Download on CurseForge &rarr;</a>
+          <h3 class="card-title">Stability first</h3>
+          <p>Malformed content is skipped with a log line, never a crash. Per-player progress persists in world <code>SavedData</code> and syncs on join.</p>
         </div>
         <div class="card">
-          <h3 class="card-title">Florarium</h3>
-          <p>A magic-tech mod built around a mana economy and a 28-bloom flower progression chain. Generate mana with flowers, spend it at crafting stations like the Bloom Apothecary to grow the next bloom, and automate ore with tiered Bonsai Miners — with the Bloom Magic 2.0 spell engine still being built.</p>
-          <p><span class="badge dev">In development · no download yet</span></p>
-          <a href="florarium/index.html">Start here: Florarium docs &rarr;</a>
+          <h3 class="card-title">Data over code</h3>
+          <p>Operators and pack authors work in plain JSON and live editors — no mod recompiles, no in-world node graphs.</p>
         </div>
         <div class="card">
-          <h3 class="card-title">Divinity Music</h3>
-          <p>An audio expansion adding seven custom music discs — White Ferrari, Death Metal, Coffee Bean, One More, Woods, &#40658;&#12356;&#涙;, Majula — with streamed tracks, jukebox songs, crafting recipes, and a persistent Now Playing HUD. Divine artifacts with special behaviours are planned next.</p>
-          <p><span class="badge dev">In development · no download yet</span></p>
-          <a href="divinity/index.html">Start here: Divinity docs &rarr;</a>
+          <h3 class="card-title">Vanilla feel</h3>
+          <p>Interfaces and art direction stay close to Minecraft's own look, themeable where it counts.</p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Documented and supported</h3>
+          <p>Every feature ships with reference docs and troubleshooting. See the <a href="docs/faq.html">Scripta FAQ</a> or our <a href="support.html">Support page</a>.</p>
         </div>
       </div>
 
-      <h2>Where things stand</h2>
-      <div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>Project</th><th>Stage</th><th>Start here</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><strong>Scripta</strong></td><td>Finished and shipped — v1.0.0 for Fabric 1.21.1</td><td><a href="docs/index.html">Documentation</a></td></tr>
-          <tr><td><strong>Florarium</strong></td><td>In development — core systems documented, engine in progress</td><td><a href="florarium/index.html">Documentation</a></td></tr>
-          <tr><td><strong>Divinity Music</strong></td><td>In development — discs built, artifacts roadmap</td><td><a href="divinity/index.html">Documentation</a></td></tr>
-        </tbody>
-      </table>
-      </div>
-
-      <h2>Our Philosophy</h2>
+      <h2>Who we are</h2>
       <p>
-        We believe that Minecraft mods should feel like a natural extension of the game.
-        Whether it's a quest system that integrates with your favorite UI or a magic mod
-        that respects the vanilla aesthetic, Sparda focuses on stability, performance,
-        and high-quality design.
+        Two verified contributors — development by @pqlle, art and design by @Doggegn —
+        building on Fabric API, Architectury API, and OwoLib. Read the full credits on
+        <a href="team.html">The Team</a>.
       </p>
 
       <div class="note">
         <span class="t">Looking for help?</span>
         Scripta troubleshooting lives on our <a href="support.html">Support page</a> with the full
-        <a href="docs/faq.html">Scripta FAQ</a> alongside. For Florarium and Divinity Music, which are
-        unreleased, the support page explains what to do while you wait.
+        <a href="docs/faq.html">Scripta FAQ</a> alongside.
       </div>
 
     </main>
