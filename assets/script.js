@@ -2,66 +2,56 @@
 (function () {
   'use strict';
 
-  /* --- Mark the current page in the sidebar --- */
-  var here = location.pathname.split('/').pop() || 'index.html';
-  // One docs section per mod; a link is "in section" when it points there.
-  function sectionOf(path) {
-    if (path.includes('/docs/')) return 'docs';
-    if (path.includes('/florarium/')) return 'florarium';
-    if (path.includes('/divinity/')) return 'divinity';
-    return 'team';
+  /* --- Mark the current page in the header navs ---
+     Exact-URL matching (works from file:// too). Mod pills already carry
+     their .current state server-side so they read correctly with JS off. */
+  function samePage(href) {
+    if (!href || href.charAt(0) === '#' || href.indexOf('://') !== -1) return false;
+    try {
+      return new URL(href, location.href).pathname === location.pathname;
+    } catch (e) {
+      return false;
+    }
   }
-  var current = sectionOf(location.pathname);
 
-  document.querySelectorAll('.sidebar a.nav').forEach(function (a) {
-    var href = a.getAttribute('href') || '';
-    // Skip in-page anchors and external links.
-    if (!href || href.charAt(0) === '#' || href.indexOf('://') !== -1) return;
-    var linkPage = href.split('/').pop() || 'index.html';
-    if (linkPage !== here) return;
-    // A link with an explicit section prefix only matches inside that
-    // section; a bare filename matches the page's own directory.
-    var linkSection = current;
-    if (href.indexOf('docs/') !== -1) linkSection = 'docs';
-    else if (href.indexOf('florarium/') !== -1) linkSection = 'florarium';
-    else if (href.indexOf('divinity/') !== -1) linkSection = 'divinity';
-    if (linkSection === current) a.classList.add('active');
+  document.querySelectorAll('.site-header a.nav').forEach(function (a) {
+    if (samePage(a.getAttribute('href'))) a.classList.add('active');
   });
 
-  /* --- Mobile nav --- */
-  var sidebar = document.querySelector('.sidebar');
+  /* --- Mobile nav: the burger toggles the collapsible header panel.
+     Without JS the panel is forced visible by the <noscript> fallback,
+     so navigation never depends on this. --- */
+  var header = document.getElementById('site-header');
   var burger = document.querySelector('.burger');
-  var scrim = document.createElement('div');
-  scrim.className = 'scrim';
-  document.body.appendChild(scrim);
 
   function closeNav() {
-    if (sidebar) sidebar.classList.remove('open');
-    scrim.classList.remove('on');
+    if (header) header.classList.remove('open');
     if (burger) burger.setAttribute('aria-expanded', 'false');
   }
 
-  if (burger && sidebar) {
+  if (burger && header) {
     burger.addEventListener('click', function () {
-      var open = sidebar.classList.toggle('open');
-      scrim.classList.toggle('on', open);
+      var open = header.classList.toggle('open');
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
-    scrim.addEventListener('click', closeNav);
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeNav();
+      if (e.key === 'Escape') {
+        closeNav();
+        if (document.activeElement === burger) burger.blur();
+      }
     });
   }
 
   /* --- Copy-to-clipboard on code blocks --- */
   document.querySelectorAll('.copy-wrap').forEach(function (wrap) {
     var pre = wrap.querySelector('pre');
-    if (!pre) return;
+    if (!pre || wrap.querySelector('.copy-btn')) return;
 
     var btn = document.createElement('button');
     btn.className = 'copy-btn';
     btn.type = 'button';
     btn.textContent = 'Copy';
+    btn.setAttribute('aria-label', 'Copy code to clipboard');
     btn.addEventListener('click', function () {
       var text = pre.innerText;
       var done = function () {

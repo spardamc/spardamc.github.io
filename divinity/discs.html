@@ -11,48 +11,34 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Discs &amp; tracks — Divinity Music · Sparda">
 <meta property="og:description" content="Divinity Music's seven custom discs: track lengths, comparator outputs, shapeless crafting recipes, and streamed sound events.">
-<noscript><style>@media (max-width: 900px){.sidebar{position:static;transform:none;height:auto;box-shadow:none}.topbar .burger{display:none}}</style></noscript>
+<noscript><style>.burger{display:none !important}.header-nav{display:block !important}.subnav-inner{flex-wrap:wrap;overflow:visible}</style></noscript>
 </head>
-<body>
-<div class="layout">
-
-  <aside class="sidebar" id="sidebar">
-    <a class="brand" href="../index.html">
-      <span class="brand-mark" aria-hidden="true">D</span>
-      <span>
-        <span class="name">Divinity Music</span><br>
-        <span class="ver">In development</span>
-      </span>
-    </a>
-
-    <div class="nav-group">Team</div>
-    <a class="nav" href="../index.html">Team Home</a>
-    <a class="nav" href="../mods.html">All Mods</a>
-
-    <div class="nav-group">Mod docs</div>
-    <a class="nav" href="../docs/index.html">Scripta <span class="nav-badge on">Available</span></a>
-    <a class="nav" href="../florarium/index.html">Florarium <span class="nav-badge">In dev</span></a>
-    <a class="nav" href="index.html">Divinity Music <span class="nav-badge">In dev</span></a>
-
-    <div class="nav-group">Divinity guide</div>
-    <a class="nav" href="index.html">Overview</a>
-    <a class="nav" href="discs.html">Discs &amp; tracks</a>
-    <a class="nav" href="listening.html">Listening experience</a>
-    <a class="nav" href="artifacts.html">Artifacts &amp; roadmap</a>
-
-    <div class="sidebar-foot">
-      <a href="../index.html">Team Site</a>
-      <br>Divinity Music &middot; in development &middot; MC 1.21.1
+<body data-mod="divinity" data-layout="docs">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">D</span><span><span class="name">Divinity Music</span><span class="ver">In development</span></span></a>
+    <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="header-nav">&#9776;</button>
+    <div class="header-nav" id="header-nav">
+      <nav class="topnav" aria-label="Primary">
+        <a class="nav" href="../index.html">Team Home</a><a class="nav" href="../mods.html">All Mods</a><a class="nav" href="../team.html">The Team</a><a class="nav" href="../support.html">Support</a>
+      </nav>
+      <div class="mod-switch" role="group" aria-label="Mod sections">
+        <span class="switch-label" aria-hidden="true">Mods</span>
+        <a class="mod-pill mod-pill--scripta is-on" href="../docs/index.html"><span class="dot" aria-hidden="true"></span>Scripta<span class="switch-status" aria-hidden="true"> · Available</span></a><a class="mod-pill mod-pill--florarium is-dev" href="../florarium/index.html"><span class="dot" aria-hidden="true"></span>Florarium<span class="switch-status" aria-hidden="true"> · In dev</span></a><a class="mod-pill mod-pill--divinity is-dev current" href="../divinity/index.html" aria-current="true"><span class="dot" aria-hidden="true"></span>Divinity Music<span class="switch-status" aria-hidden="true"> · In dev</span></a>
+      </div>
     </div>
-  </aside>
-
-  <div class="main">
-    <div class="topbar">
-      <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">&#9776;</button>
-      <span class="label">Divinity docs &middot; Sparda</span>
+  </div>
+  <nav class="subnav" aria-label="In this section">
+    <div class="subnav-inner">
+      <span class="crumb" aria-hidden="true">Divinity guide</span>
+      <a class="nav" href="index.html">Overview</a><a class="nav" href="discs.html">Discs & tracks</a><a class="nav" href="listening.html">Listening experience</a><a class="nav" href="artifacts.html">Artifacts & roadmap</a>
     </div>
+  </nav>
+</header>
+<div class="page">
 
-    <div class="content">
+    <main class="content" id="main">
 
       <h1>Discs &amp; tracks</h1>
       <p class="lead">
@@ -132,14 +118,13 @@
         <a href="listening.html">Listening experience &rarr;</a>
       </div>
 
-    </div>
+    </main>
 
-    <div class="page-foot">
+    <footer class="page-foot">
       <span>Divinity Music &middot; in development &middot; Sparda team site</span>
       <span>2026</span>
-    </div>
+    </footer>
   </div>
-</div>
 
 <script src="../assets/script.js"></script>
 </body>
